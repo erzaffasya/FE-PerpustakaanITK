@@ -777,7 +777,9 @@ export default {
                               >
                                 <h5 class="fs-15 my-1">
                                   <router-link
-                                    to="/ecommerce/product-details"
+                                    :to="{
+                                      name: 'tambah-peminjamanRuangan',
+                                    }"
                                     class="text-reset"
                                     >{{ item.nama_ruangan }}</router-link
                                   >
@@ -930,39 +932,48 @@ export default {
                     >
                       <div class="swiper-slide">
                         <div class="card border border-dashed shadow-none">
-                          <div class="card-body">
-                            <div class="d-flex">
-                              <div class="flex-shrink-0 avatar-sm">
-                                <div class="avatar-title bg-light rounded">
-                                  <img
-                                    src="@/assets/images/companies/img-1.png"
-                                    alt=""
-                                    height="30"
-                                  />
-                                </div>
-                              </div>
-                              <div class="flex-grow-1 ms-3">
-                                <div>
-                                  <p
-                                    class="
-                                      text-muted
-                                      mb-1
-                                      fst-italic
-                                      text-truncate-two-lines
-                                    "
-                                  >
-                                    <b> {{ item.dokumen.judul }} </b>
-                                  </p>
-                                  <div class="fs-11 align-middle text-warning">
-                                    {{ item.dokumen.nama_kategori }}
+                          <router-link
+                            :to="{
+                              name: 'detail-dokumen',
+                              params: { id: item.dokumen.id },
+                            }"
+                          >
+                            <div class="card-body">
+                              <div class="d-flex">
+                                <div class="flex-shrink-0 avatar-sm">
+                                  <div class="avatar-title bg-light rounded">
+                                    <img
+                                      :src="item.gambar_dokumen"
+                                      alt=""
+                                      height="30"
+                                    />
                                   </div>
                                 </div>
-                                <div class="text-end mb-0 text-muted">
-                                  <p>{{ item.durasi_peminjaman }}</p>
+                                <div class="flex-grow-1 ms-3">
+                                  <div>
+                                    <p
+                                      class="
+                                        text-muted
+                                        mb-1
+                                        fst-italic
+                                        text-truncate-two-lines
+                                      "
+                                    >
+                                      <b> {{ item.dokumen.judul }} </b>
+                                    </p>
+                                    <div
+                                      class="fs-11 align-middle text-warning"
+                                    >
+                                      {{ item.dokumen.nama_kategori }}
+                                    </div>
+                                  </div>
+                                  <div class="text-end mb-0 text-muted">
+                                    <p>{{ item.durasi_peminjaman }}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </router-link>
                         </div>
                       </div>
                     </swiper-slide>

@@ -195,7 +195,9 @@ export default {
                               </td>
                             </tr> -->
                             <tr>
-                              <th class="ps-0" scope="row">Tanggal Bergabung</th>
+                              <th class="ps-0" scope="row">
+                                Tanggal Bergabung
+                              </th>
                               <td class="text-muted">{{ User.created_at }}</td>
                             </tr>
                           </tbody>
@@ -232,47 +234,54 @@ export default {
                               <div
                                 class="card border border-dashed shadow-none"
                               >
-                                <div class="card-body">
-                                  <div class="d-flex">
-                                    <div class="flex-shrink-0 avatar-sm">
-                                      <div
-                                        class="avatar-title bg-light rounded"
-                                      >
-                                        <img
-                                          src="@/assets/images/companies/img-1.png"
-                                          alt=""
-                                          height="30"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                      <div>
-                                        <p
-                                          class="
-                                            text-muted
-                                            mb-1
-                                            fst-italic
-                                            text-truncate-two-lines
-                                          "
-                                        >
-                                          <b> {{ item.dokumen.judul }} </b>
-                                        </p>
+                                <router-link
+                                  :to="{
+                                    name: 'detail-dokumen',
+                                    params: { id: item.dokumen.id },
+                                  }"
+                                >
+                                  <div class="card-body">
+                                    <div class="d-flex">
+                                      <div class="flex-shrink-0 avatar-sm">
                                         <div
-                                          class="
-                                            fs-11
-                                            align-middle
-                                            text-warning
-                                          "
+                                          class="avatar-title bg-light rounded"
                                         >
-                                          {{ item.dokumen.nama_kategori }}
+                                          <img
+                                            :src="item.gambar_dokumen"
+                                            alt=""
+                                            height="30"
+                                          />
                                         </div>
                                       </div>
-                                      <div class="text-end mb-0 text-muted">
-                                        <p>{{ item.durasi_peminjaman }}</p>
+                                      <div class="flex-grow-1 ms-3">
+                                        <div>
+                                          <p
+                                            class="
+                                              text-muted
+                                              mb-1
+                                              fst-italic
+                                              text-truncate-two-lines
+                                            "
+                                          >
+                                            <b> {{ item.dokumen.judul }} </b>
+                                          </p>
+                                          <div
+                                            class="
+                                              fs-11
+                                              align-middle
+                                              text-warning
+                                            "
+                                          >
+                                            {{ item.dokumen.nama_kategori }}
+                                          </div>
+                                        </div>
+                                        <div class="text-end mb-0 text-muted">
+                                          <p>{{ item.durasi_peminjaman }}</p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                </router-link>
                               </div>
                             </div>
                           </swiper-slide>
@@ -339,7 +348,10 @@ export default {
                             </ul>
                           </div>
                         </div>
-                        <div class="card-body" style="height: 64vh; overflow-y: scroll;">
+                        <div
+                          class="card-body"
+                          style="height: 64vh; overflow-y: scroll"
+                        >
                           <div class="tab-content text-muted">
                             <div
                               class="tab-pane active"
