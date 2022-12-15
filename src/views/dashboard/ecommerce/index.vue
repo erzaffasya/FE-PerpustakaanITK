@@ -34,6 +34,10 @@ export default {
         ruangan: null,
         peminjamanRuangan: null,
         pengunjung: null,
+        yudisium: null,
+        yudisiumMahasiswa: null,
+        pengajuanPeminjamanRuangan: null,
+        pengajuanYudisium: null,
       },
       data: {},
       date: null,
@@ -121,6 +125,16 @@ export default {
         this.data.peminjamanDokumenAktif = response.data.data;
       });
     },
+    jadwalYudisium() {
+      apiStatistik.jumlahYudisium().then((response) => {
+        this.jumlah.yudisium = response.data.data;
+      });
+    },
+    yudisiumMahasiswa() {
+      apiStatistik.jumlahYudisiumMahasiswa().then((response) => {
+        this.jumlah.yudisiumMahasiswa = response.data.data;
+      });
+    },
   },
   mounted() {
     this.dokumen();
@@ -132,6 +146,8 @@ export default {
     this.peminjamanDokumenPopuler();
     this.peminjamanRuanganPopuler();
     this.peminjamanDokumenAktif();
+    this.jadwalYudisium();
+    this.yudisiumMahasiswa();
   },
 };
 </script>
@@ -206,6 +222,7 @@ export default {
           <!--end row-->
 
           <div class="row">
+            <!-- Dokumen  -->
             <div class="col-xl-3 col-md-6">
               <!-- card -->
               <div class="card card-animate">
@@ -241,7 +258,7 @@ export default {
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                       <span class="avatar-title bg-soft-primary rounded fs-3">
-                        <i class=" bx bx-data text-primary"></i>
+                        <i class="bx bx-data text-primary"></i>
                       </span>
                     </div>
                   </div>
@@ -250,8 +267,8 @@ export default {
               </div>
               <!-- end card -->
             </div>
-            <!-- end col -->
 
+            <!-- Peminjaman Dokumen  -->
             <div class="col-xl-3 col-md-6">
               <!-- card -->
               <div class="card card-animate">
@@ -287,7 +304,7 @@ export default {
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                       <span class="avatar-title bg-soft-info rounded fs-3">
-                        <i class=" bx bx-data text-info"></i>
+                        <i class="bx bx-data text-info"></i>
                       </span>
                     </div>
                   </div>
@@ -296,11 +313,11 @@ export default {
               </div>
               <!-- end card -->
             </div>
-            <!-- end col -->
 
+            <!-- Ruangan  -->
             <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
               <!-- card -->
-              <div  class="card card-animate">
+              <div class="card card-animate">
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
@@ -334,7 +351,7 @@ export default {
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                       <span class="avatar-title bg-soft-primary rounded fs-3">
-                        <i class=" bx bx-data text-primary"></i>
+                        <i class="bx bx-data text-primary"></i>
                       </span>
                     </div>
                   </div>
@@ -343,7 +360,6 @@ export default {
               </div>
               <!-- end card -->
             </div>
-            <!-- end col -->
 
             <div class="col-xl-3 col-md-6">
               <div class="card card-animate">
@@ -379,7 +395,187 @@ export default {
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                       <span class="avatar-title bg-soft-info rounded fs-3">
-                        <i class=" bx bx-data text-info"></i>
+                        <i class="bx bx-data text-info"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Jadwal Yudisium  -->
+            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+              <!-- card -->
+              <div class="card card-animate">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                      <p
+                        class="
+                          text-uppercase
+                          fw-medium
+                          text-muted text-truncate
+                          mb-0
+                        "
+                      >
+                        Jadwal Yudisium
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-end justify-content-between mt-4"
+                  >
+                    <div>
+                      <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                        {{ this.jumlah.yudisium }}
+                      </h4>
+                      <router-link
+                        :to="{
+                          name: 'lihat-yudisium',
+                          params: { id: data.id },
+                        }"
+                        class="text-decoration-underline"
+                        >Lihat data</router-link
+                      >
+                    </div>
+                    <div class="avatar-sm flex-shrink-0">
+                      <span class="avatar-title bg-soft-info rounded fs-3">
+                        <i class="bx bx-data text-info"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card body -->
+              </div>
+              <!-- end card -->
+            </div>
+
+            <!-- Yudisium  -->
+            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+              <!-- card -->
+              <div class="card card-animate">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                      <p
+                        class="
+                          text-uppercase
+                          fw-medium
+                          text-muted text-truncate
+                          mb-0
+                        "
+                      >
+                        Yudisium
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-end justify-content-between mt-4"
+                  >
+                    <div>
+                      <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                        {{ this.jumlah.yudisiumMahasiswa }}
+                      </h4>
+                      <router-link
+                        :to="{
+                          name: 'lihat-yudisium-mahasiswa',
+                          params: { id: data.id },
+                        }"
+                        class="text-decoration-underline"
+                        >Lihat data</router-link
+                      >
+                    </div>
+                    <div class="avatar-sm flex-shrink-0">
+                      <span class="avatar-title bg-soft-primary rounded fs-3">
+                        <i class="bx bx-data text-primary"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card body -->
+              </div>
+              <!-- end card -->
+            </div>
+
+            <!-- Pengajuan Peminjaman Ruangan -->
+            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+              <div class="card card-animate">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                      <p
+                        class="
+                          text-uppercase
+                          fw-medium
+                          text-muted text-truncate
+                          mb-0
+                        "
+                      >
+                        Pengajuan Peminjaman Ruangan
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-end justify-content-between mt-4"
+                  >
+                    <div>
+                      <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                        {{ this.jumlah.peminjamanRuangan }}
+                      </h4>
+                      <router-link
+                        :to="{
+                          name: 'lihat-peminjamanRuangan',
+                        }"
+                        class="text-decoration-underline"
+                        >Lihat data</router-link
+                      >
+                    </div>
+                    <div class="avatar-sm flex-shrink-0">
+                      <span class="avatar-title bg-soft-info rounded fs-3">
+                        <i class="bx bx-data text-info"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pengajuan Peminjaman Ruangan -->
+            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+              <div class="card card-animate">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                      <p
+                        class="
+                          text-uppercase
+                          fw-medium
+                          text-muted text-truncate
+                          mb-0
+                        "
+                      >
+                        Pengajuan Yudisium
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-end justify-content-between mt-4"
+                  >
+                    <div>
+                      <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                        {{ this.jumlah.yudisiumMahasiswa }}
+                      </h4>
+                      <router-link
+                        :to="{
+                          name: 'lihat-yudisium',
+                        }"
+                        class="text-decoration-underline"
+                        >Lihat data</router-link
+                      >
+                    </div>
+                    <div class="avatar-sm flex-shrink-0">
+                      <span class="avatar-title bg-soft-primary rounded fs-3">
+                        <i class="bx bx-data text-primary"></i>
                       </span>
                     </div>
                   </div>
@@ -450,8 +646,10 @@ export default {
                               <div>
                                 <h5 class="fs-15 my-1">
                                   <router-link
-                                    to="/ecommerce/product-details"
-                                    class="text-reset"
+                                    :to="{
+                                      name: 'detail-dokumen',
+                                      params: { id: item.id },
+                                    }"
                                     >{{ item.judul }}</router-link
                                   >
                                 </h5>
@@ -657,7 +855,6 @@ export default {
           </div>
           <!-- end row-->
 
-          
           <!-- end row-->
         </div>
         <!-- end .h-100-->
@@ -772,76 +969,6 @@ export default {
                   </swiper>
                 </div>
               </div>
-
-              <!-- <div class="p-3">
-                <h6 class="text-muted mb-3 text-uppercase fw-semibold">
-                  Peminjaman Ruangan
-                  <span class="badge badge-soft-success">Aktif</span>
-                </h6>
-                <div>
-                  <swiper
-                    class="vertical-swiper"
-                    :slidesPerView="2"
-                    :spaceBetween="10"
-                    :mousewheel="true"
-                    :loop="false"
-                    :direction="'vertical'"
-                    :autoplay="{
-                      delay: 2500,
-                      disableOnInteraction: false,
-                    }"
-                    style="height: 250px"
-                  >
-                    <swiper-slide>
-                      <div class="swiper-slide">
-                        <div class="card border border-dashed shadow-none">
-                          <div class="card-body">
-                            <div class="d-flex">
-                              <div class="flex-shrink-0 avatar-sm">
-                                <div class="avatar-title bg-light rounded">
-                                  <img
-                                    src="@/assets/images/companies/img-1.png"
-                                    alt=""
-                                    height="30"
-                                  />
-                                </div>
-                              </div>
-                              <div class="flex-grow-1 ms-3">
-                                <div>
-                                  <p
-                                    class="
-                                      text-muted
-                                      mb-1
-                                      fst-italic
-                                      text-truncate-two-lines
-                                    "
-                                  >
-                                    " Great product and looks great, lots of
-                                    features. "
-                                  </p>
-                                  <div class="fs-11 align-middle text-warning">
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                  </div>
-                                </div>
-                                <div class="text-end mb-0 text-muted">
-                                  - by
-                                  <cite title="Source Title"
-                                    >Force Medicines</cite
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </swiper-slide>
-                  </swiper>
-                </div>
-              </div> -->
 
               <div class="p-3 mt-2">
                 <h6 class="text-muted mb-3 text-uppercase fw-semibold">

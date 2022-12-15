@@ -16,6 +16,12 @@ export default {
     jumlahPengunjung() {
         return Api.get(url + '/api/jumlah-pengunjung');
     },
+    jumlahYudisium() {
+        return Api.get(url + '/api/jumlah-yudisium');
+    },
+    jumlahYudisiumMahasiswa() {
+        return Api.get(url + '/api/jumlah-yudisium-mahasiswa');
+    },
     pengunjungTerakhir() {
         return Api.get(url + '/api/pengunjung-terakhir');
     },

@@ -460,9 +460,9 @@ export default {
                                     <th class="sort" data-sort="product_name">
                                       Dokumen
                                     </th>
-                                    <th class="sort" data-sort="city">
+                                    <!-- <th class="sort" data-sort="city">
                                       Action
-                                    </th>
+                                    </th> -->
                                   </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
@@ -486,15 +486,15 @@ export default {
                                     <td class="product_name">
                                       {{ data.dokumen.judul }}
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
-                                        <!-- <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                        <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
                                           data-bs-placement="top" title="View">
                                           <router-link to="/ecommerce/order-ruangans"
                                             class="text-primary d-inline-block">
                                             <i class="ri-eye-fill fs-16"></i>
                                           </router-link>
-                                        </li> -->
+                                        </li>
                                         <li
                                           class="list-inline-item edit"
                                           data-bs-toggle="tooltip"
@@ -538,7 +538,7 @@ export default {
                                           </a>
                                         </li>
                                       </ul>
-                                    </td>
+                                    </td> -->
                                   </tr>
                                 </tbody>
                               </table>
