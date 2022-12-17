@@ -172,7 +172,7 @@ export default {
 
             <li class="nav-item">
                 <router-link to="/" class="nav-link remove-sidebar custom-abc" data-key="t-dashboard">
-                    <i class="ri-honour-line"></i>
+                    <i class='bx bxs-dashboard'></i>
                     <span data-key="t-widgets">Dashboard</span>
                 </router-link>
             </li>
@@ -186,7 +186,7 @@ export default {
                 </li>
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#kategori" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bx-category-alt' ></i>
                         <span data-key="t-dashboards"> Kategori</span>
                     </a>
                     <div class="collapse menu-dropdown" id="kategori">
@@ -206,7 +206,7 @@ export default {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#dokumen" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-file-doc' ></i>
                         <span data-key="t-dashboards"> Dokumen</span>
                     </a>
                     <div class="collapse menu-dropdown" id="dokumen">
@@ -222,7 +222,7 @@ export default {
                                 </router-link>
                             </li>
                             <li v-if="role =='Dosen'" class="nav-item">
-                                <router-link to="/dokumen/bimbingan" class="nav-link remove-sidebar custom-abc" data-key="t-lihatdokumen">
+                                <router-link to="/dokumen/bimbingan" class="nav-link remove-sidebar custom-abc" data-key="t-lihatbimbingan">
                                     Bimbingan
                                 </router-link>
                             </li>
@@ -231,13 +231,13 @@ export default {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#peminjaman-dokumen" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                       <i class='bx bx-library' ></i>
                         <span data-key="t-dashboards"> Peminjaman Dokumen</span>
                     </a>
                     <div class="collapse menu-dropdown" id="peminjaman-dokumen">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <router-link to="/peminjaman-dokumen/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpeminjaman-dokumen">
+                                <router-link to="/peminjaman-dokumen/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpeminjamandokumen">
                                     Lihat Peminjaman Dokumen
                                 </router-link>
                             </li>
@@ -246,13 +246,13 @@ export default {
                 </li>
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#admin-bookmark" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-bookmark' ></i>
                         <span data-key="t-dashboards">Bookmark</span>
                     </a>
                     <div class="collapse menu-dropdown" id="admin-bookmark">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <router-link to="/bookmark/admin" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpeminjaman-dokumen">
+                                <router-link to="/bookmark/admin" class="nav-link remove-sidebar custom-abc" data-key="t-adminbookmark">
                                     Lihat Bookmark
                                 </router-link>
                             </li>
@@ -262,7 +262,7 @@ export default {
 
                 <li v-if="role != 'Admin'" class="nav-item">
                     <router-link to="/bookmark/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatbookmark">
-                        <i class="ri-honour-line"></i>
+                        <i class='bx bxs-bookmark' ></i>
                         <span data-key="t-widgets">Bookmark</span>
                     </router-link>
                 </li>
@@ -275,7 +275,7 @@ export default {
 
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#ruanganbaca" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-cabinet'></i>
                         <span data-key="t-dashboards"> Ruangan</span>
                     </a>
                     <div class="collapse menu-dropdown" id="ruanganbaca">
@@ -296,7 +296,7 @@ export default {
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#peminjamanruangan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-calendar'></i>
                         <span data-key="t-dashboards"> Peminjaman Ruangan</span>
                     </a>
                     <div class="collapse menu-dropdown" id="peminjamanruangan">
@@ -323,7 +323,7 @@ export default {
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#pengunjung" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                     <i class='bx bx-body' ></i>
                         <span data-key="t-dashboards"> Pengunjung</span>
                     </a>
                     <div class="collapse menu-dropdown" id="pengunjung">
@@ -344,7 +344,7 @@ export default {
 
                 <li v-if="role == 'Admin'" class="nav-item">
                     <router-link class="nav-link remove-sidebar menu-link" to="/qrcode-pengunjung">
-                        <i class="ri-honour-line"></i>
+                       <i class='bx bx-qr-scan' ></i>
                         <span data-key="t-widgets">Scan QRcode</span>
                     </router-link>
                 </li>
@@ -363,7 +363,7 @@ export default {
                 </li>
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#jadwalYudisium" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-calendar-star' ></i>
                         <span data-key="t-dashboards"> Jadwal Yudisium</span>
                     </a>
                     <div class="collapse menu-dropdown" id="jadwalYudisium">
@@ -383,7 +383,7 @@ export default {
                 </li>
                 <li v-if="role != 'Dosen'" class="nav-item">
                     <a class="nav-link menu-link" href="#pengajuanyudisium" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i>
+                        <i class='bx bxs-graduation'></i>
                         <span data-key="t-dashboards"> Yudisium</span>
                     </a>
                     <div class="collapse menu-dropdown" id="pengajuanyudisium">
@@ -416,12 +416,12 @@ export default {
             <div v-if="role != 'Tendik'">
                 <li class="menu-title">
                     <i class="ri-more-fill"></i>
-                    <span data-key="t-components">components</span>
+                    <span data-key="t-cari-dokumen">Fitur</span>
                 </li>
 
                 <li class="nav-item">
-                    <router-link class="nav-link remove-sidebar menu-link" to="/grid-dokumen">
-                        <i class="ri-honour-line"></i>
+                    <router-link class="nav-link remove-sidebar menu-link" to="/grid-dokumen" data-key="t-caridokumen">
+                        <i class='bx bxs-file-find' ></i>
                         <span data-key="t-widgets">Cari Dokumen</span>
                     </router-link>
                 </li>

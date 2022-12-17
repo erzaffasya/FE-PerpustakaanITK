@@ -198,7 +198,7 @@ export default {
             <div class="d-flex flex-column h-100">
               <div class="d-flex">
                 <div class="flex-grow-1">
-                  <p class="text-muted mb-4">{{ item.tanggal_dibuat }}</p>
+                  <p class="text-muted mb-4"> </p>
                 </div>
                 <div class="flex-shrink-0">
                   <div class="hstack gap-1 flex-wrap">

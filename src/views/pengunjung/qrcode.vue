@@ -5,7 +5,7 @@ import appConfig from "../../../app.config";
 import apiPengunjung from "../../apis/Pengunjung.js";
 export default {
   page: {
-    title: "Starter",
+    title: "QR Code",
     meta: [{ name: "description", content: appConfig.description }],
   },
   data() {
@@ -13,11 +13,11 @@ export default {
       title: "Checkin Pengunjung",
       items: [
         {
-          text: "Pages",
+          text: "Pengunjung",
           href: "/",
         },
         {
-          text: "Starter",
+          text: "QR Code",
           active: true,
         },
       ],

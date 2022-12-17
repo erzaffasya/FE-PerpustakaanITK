@@ -202,7 +202,7 @@ export default [
     path: "/grid-dokumen",
     name: "grid-dokumen",
     meta: {
-      title: "Grid Dokumen",
+      title: "Cari Dokumen",
       authRequired: true,
     },
     component: () => import("../views/peminjamanDokumen/gridDokumen"),
