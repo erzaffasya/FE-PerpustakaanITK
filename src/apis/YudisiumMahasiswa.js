@@ -12,6 +12,9 @@ export default {
   lihatYudisiumMahasiswa() {
     return Api.get(url + "/api/yudisium-mahasiswa");
   },
+  exportYudisium() {
+    return Api.get(url + "/api/export-yudisium-mahasiswa", { responseType: 'blob' });
+  },
   filterYudisiumMahasiswa(id) {
     return Api.get(url +'/api/yudisium-mahasiswa?filter='+id);
 },

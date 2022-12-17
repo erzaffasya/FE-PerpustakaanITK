@@ -140,6 +140,17 @@ export default {
     },
   },
   methods: {
+        exportYudisiums() {
+      apiYudisiumMahasiswa.exportYudisium().then((response) => {
+        console.log(response,'respose')
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download","yudisiumMahasiswa.xlsx");
+        document.body.appendChild(link);
+        link.click();
+      });
+    },
     getRiwayat() {
       this.YudisiumMahasiswa = [];
       apiYudisiumMahasiswa
@@ -522,6 +533,23 @@ export default {
                   <div class="flex-grow-1 ms-2">
                     <div class="col-lg-12">
                       <div class="card" id="orderList">
+                                 <div
+                          class="card-header d-flex align-items-center border-0"
+                        >
+                          <h5 class="card-title mb-0 flex-grow-1">
+                            Yudisium Mahasiswa
+                          </h5>
+                          <div class="flex-shrink-0">
+                            <div class="flax-shrink-0 hstack gap-2">
+                              <button
+                                @click="exportYudisiums()"
+                                class="btn pr-2 pl-2 btn-primary"
+                              >
+                                Export
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                         <div
                           class="
                             card-body

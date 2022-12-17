@@ -10,7 +10,7 @@ import apiUser from "../../apis/User.js";
 import animationData from "@/components/widgets/lupuorrc.json";
 import Lottie from "@/components/widgets/lottie.vue";
 import $ from 'jquery';
-import CKEditor from "@ckeditor/ckeditor5-vue";
+// import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default {
     page: {
@@ -227,7 +227,7 @@ export default {
         Layout,
         PageHeader,
         lottie: Lottie,
-        ckeditor: CKEditor.component
+        // ckeditor: CKEditor.component
     },
     mounted() {
         if (this.id) {
@@ -379,10 +379,11 @@ export default {
                                                         <input id="cover" @change="imageChange($event, 'gambar_dokumen')" ref="gambar_dokumen" class="form-control" type="file" />
                                                     </div>
                                                     <div class="col-12">
-                                                        <label for="email" class="form-label">Deskripsi
+                                                        <label for="deskripsi" class="form-label">Deskripsi
                                                         </label>
                                                         <div class="ckeditor-classic">
-                                                            <ckeditor v-model="this.Dokumen.deskripsi" :editor="editor"></ckeditor>
+                                                            <textarea class="form-control" v-model="Dokumen.deskripsi"></textarea>
+                                                            <!-- <ckeditor v-model="Dokumen.deskripsi" :editor="editor"></ckeditor> -->
                                                         </div>
                                                     </div>
                                                     <div class="card-body p-4" v-if="this.Berkas.isPembimbing ">
@@ -466,9 +467,9 @@ export default {
                                                     </div>
                                                 </div>
                                             </div>
-
+<!-- {{Dokumen.judul}} {{Dokumen.tahun_terbit}} {{Dokumen.penerbit}} {{KategoriID}} {{Dokumen.nama_pengarang}} {{Dokumen}} {{Dokumen['gambar_dokumen']}} -->
                                             <div class="d-flex align-items-start gap-3 mt-4">
-                                                <button v-if="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" disabled type="button" class="btn btn-warning btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-bill-address-tab">
+                                                <button v-if="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" disabled type="button" class="btn btn-warning btn-label right ms-auto">
                                                     <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Locked
                                                 </button>
                                                 <button :hidden="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-bill-address-tab">
@@ -592,7 +593,7 @@ export default {
                                                         <input id="full_dokumen" @change="imageChange($event, 'full_dokumen')" ref="full_dokumen" class="form-control" type="file" required />
                                                     </div>
                                                 </div>
-                                                <div class="form-check mb-3">
+                                                <div class="form-check mt-4 mb-3">
                                                     <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
                                                     <label class="form-check-label" for="validationFormCheck1">Apakah berkas sudah sesuai?</label>
                                                     <div class="invalid-feedback">Harap centang checkbox ini</div>

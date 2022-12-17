@@ -6,7 +6,7 @@ import "flatpickr/dist/flatpickr.css";
 import Layout from "../../layouts/main.vue";
 import appConfig from "../../../app.config";
 import PageHeader from "@/components/page-header";
-import apiKategori from "../../apis/Kategori.js";
+import apiRuanganBaca from "../../apis/RuanganBaca.js";
 import animationData from "@/components/widgets/msoeawqm.json";
 import Lottie from "@/components/widgets/lottie.vue";
 
@@ -42,7 +42,7 @@ export default {
       defaultOptions: {
         animationData: animationData,
       },
-      kategori: [],
+      RuanganBaca: [],
     };
   },
   components: {
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     displayedPosts() {
-      return this.paginate(this.kategori);
+      return this.paginate(this.RuanganBaca);
     },
     resultQuery() {
       console.log(this.searchQuery);
@@ -60,9 +60,12 @@ export default {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
           return (
-            (data.nama_kategori &&
-              data.nama_kategori.toLowerCase().includes(search)) ||
-            (data.detail && data.detail.toLowerCase().includes(search))
+            (data.nama_ruangan &&
+              data.nama_ruangan.toLowerCase().includes(search)) ||
+            (data.deskripsi && data.deskripsi.toLowerCase().includes(search)) ||
+            (data.jumlah_orang &&
+              data.jumlah_orang.toLowerCase().includes(search)) ||
+            (data.lokasi && data.lokasi.toLowerCase().includes(search))
           );
         });
       } else {
@@ -79,7 +82,7 @@ export default {
     },
   },
   created() {
-    this.getKategori();
+    this.getRuanganBaca();
   },
   mounted() {
     this.setPages();
@@ -90,9 +93,12 @@ export default {
     },
   },
   methods: {
-    async getKategori() {
-      await apiKategori.lihatKategori().then((response) => {
-        this.kategori = response.data.data;
+    async getRuanganBaca() {
+      await apiRuanganBaca.lihatRuanganBaca().then((response) => {
+        this.RuanganBaca = response.data.data;
+        this.pages = [];
+        this.page = 1;
+        this.setPages();
       });
     },
     onChangeStatus(e) {
@@ -102,17 +108,17 @@ export default {
       this.isPayment = e;
     },
     setPages() {
-      let numberOfPages = Math.ceil(this.kategori.length / this.perPage);
+      let numberOfPages = Math.ceil(this.RuanganBaca.length / this.perPage);
       for (let index = 1; index <= numberOfPages; index++) {
         this.pages.push(index);
       }
     },
-    paginate(kategori) {
+    paginate(RuanganBaca) {
       let page = this.page;
       let perPage = this.perPage;
       let from = page * perPage - perPage;
       let to = page * perPage;
-      return kategori.slice(from, to);
+      return RuanganBaca.slice(from, to);
     },
     SearchData() {
       this.resultQuery;
@@ -130,10 +136,10 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          apiKategori.hapusKategori(id).then(() => {
-            this.getKategori();
+          apiRuanganBaca.hapusRuanganBaca(id).then(() => {
+            this.getRuanganBaca();
           });
-          Swal.fire("Berhasil!", "Data Kategori Berhasil Dihapus.", "success");
+          Swal.fire("Berhasil!", "Data Ruangan Berhasil Dihapus.", "success");
         }
       });
     },
@@ -160,7 +166,7 @@ export default {
                   role="tab"
                   aria-selected="false"
                 >
-                  Data Kategori
+                  Data Ruangan
                 </a>
               </li>
             </ul>
@@ -206,16 +212,16 @@ export default {
                                     <th scope="col" style="width: 25px"></th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="customer_name">
-                                      Nama Kategori
+                                      Nama Ruangan
                                     </th>
                                     <th class="sort" data-sort="product_name">
                                       Deskripsi
                                     </th>
-                                    <th class="sort" data-sort="date">
-                                      Berkas
+                                    <th class="sort" data-sort="product_name">
+                                      Jumlah Orang
                                     </th>
-                                    <th class="sort" data-sort="date">
-                                      Pembimbing
+                                    <th class="sort" data-sort="product_name">
+                                      Lokasi
                                     </th>
                                     <th class="sort" data-sort="city">
                                       Action
@@ -228,34 +234,24 @@ export default {
                                     :key="index"
                                   >
                                     <th scope="row"></th>
+                                    <td class="customer_name">{{ data.id }}</td>
                                     <td class="customer_name">
-                                      {{ index + 1 }}
+                                      {{ data.nama_ruangan }}
                                     </td>
-                                    <td  class="customer_name">
-                                      {{ data.nama_kategori }}
+                                    <td class="product_name">
+                                      {{ data.deskripsi }}
                                     </td>
-                                    <td style="overflow-x: auto;  width: 200px; height: 70px;" class="product_name">
-                                      {{ data.detail }}
+                                      <td class="product_name">
+                                      {{ data.jumlah_orang }}
                                     </td>
-                                    <td class="amount">
-                                      <div
-                                        v-for="(item, index) in data.berkas"
-                                        :key="item"
-                                      >
-                                        <li v-if="item">
-                                          {{ index }}
-                                        </li>
-                                        
-                                      </div>
-                                    </td>
-                                    <td  class="customer_name">
-                                      {{ data.isPembimbing }}
+                                      <td class="product_name">
+                                      {{ data.lokasi }}
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
                                         <!-- <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
                                           data-bs-placement="top" title="View">
-                                          <router-link to="/ecommerce/order-details"
+                                          <router-link to="/ecommerce/order-ruangans"
                                             class="text-primary d-inline-block">
                                             <i class="ri-eye-fill fs-16"></i>
                                           </router-link>
@@ -269,7 +265,7 @@ export default {
                                         >
                                           <router-link
                                             :to="{
-                                              name: 'edit-kategori',
+                                              name: 'edit-ruangan',
                                               params: { id: data.id },
                                             }"
                                             class="

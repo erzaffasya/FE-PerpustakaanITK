@@ -104,8 +104,8 @@ export default {
                                 </div>
                                 <div class="col-lg-9">
                                     <select v-model="Kategori.isPembimbing" class="form-select mb-3" aria-label="Default select example">
-                                        <option value="0">Tidak Aktif</option>
-                                        <option value="1">Aktif</option>
+                                        <option value="false">Tidak Aktif</option>
+                                        <option value="true">Aktif</option>
                                     </select>
                                 </div>
                             </div>
