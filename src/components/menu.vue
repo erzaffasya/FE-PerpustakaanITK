@@ -244,8 +244,23 @@ export default {
                         </ul>
                     </div>
                 </li>
+                <li v-if="role == 'Admin'" class="nav-item">
+                    <a class="nav-link menu-link" href="#admin-bookmark" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                        <i class="ri-dashboard-2-line"></i>
+                        <span data-key="t-dashboards">Bookmark</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="admin-bookmark">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <router-link to="/bookmark/admin" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpeminjaman-dokumen">
+                                    Lihat Bookmark
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-                <li class="nav-item">
+                <li v-if="role != 'Admin'" class="nav-item">
                     <router-link to="/bookmark/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatbookmark">
                         <i class="ri-honour-line"></i>
                         <span data-key="t-widgets">Bookmark</span>
@@ -340,7 +355,7 @@ export default {
                     <span data-key="t-components">Jurusan</span>
                 </li>
 
-                <li v-if="role == 'Tendik' || role == 'Admin'" class="nav-item">
+                <li v-if="role == 'Tendik'" class="nav-item">
                     <router-link class="nav-link remove-sidebar menu-link" to="/jurusan/lihat-dokumen">
                         <i class="ri-honour-line"></i>
                         <span data-key="t-widgets">Cek Dokumen</span>

@@ -6,7 +6,7 @@ import "flatpickr/dist/flatpickr.css";
 import Layout from "../../layouts/main.vue";
 import appConfig from "../../../app.config";
 import PageHeader from "@/components/page-header";
-import apiRuanganBaca from "../../apis/RuanganBaca.js";
+import apiBookmark from "../../apis/Bookmark.js";
 import animationData from "@/components/widgets/msoeawqm.json";
 import Lottie from "@/components/widgets/lottie.vue";
 
@@ -42,7 +42,7 @@ export default {
       defaultOptions: {
         animationData: animationData,
       },
-      RuanganBaca: [],
+      Bookmark: [],
     };
   },
   components: {
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     displayedPosts() {
-      return this.paginate(this.RuanganBaca);
+      return this.paginate(this.Bookmark);
     },
     resultQuery() {
       console.log(this.searchQuery);
@@ -60,12 +60,12 @@ export default {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
           return (
-            (data.nama_ruangan &&
-              data.nama_ruangan.toLowerCase().includes(search)) ||
-            (data.deskripsi && data.deskripsi.toLowerCase().includes(search)) ||
-            (data.jumlah_orang &&
-              data.jumlah_orang.toLowerCase().includes(search)) ||
-            (data.lokasi && data.lokasi.toLowerCase().includes(search))
+            (data.dokumen.judul &&
+              data.dokumen.judul.toLowerCase().includes(search)) ||
+            (data.dokumen.kategori && data.dokumen.kategori.toLowerCase().includes(search)) ||
+            (data.user_id.name &&
+              data.user_id.name.toLowerCase().includes(search)) ||
+            (data.user_id.nim && data.user_id.nim.toLowerCase().includes(search))
           );
         });
       } else {
@@ -82,7 +82,7 @@ export default {
     },
   },
   created() {
-    this.getRuanganBaca();
+    this.getBookmark();
   },
   mounted() {
     this.setPages();
@@ -93,9 +93,9 @@ export default {
     },
   },
   methods: {
-    async getRuanganBaca() {
-      await apiRuanganBaca.lihatRuanganBaca().then((response) => {
-        this.RuanganBaca = response.data.data;
+    async getBookmark() {
+      await apiBookmark.lihatBookmark().then((response) => {
+        this.Bookmark = response.data.data;
         this.pages = [];
         this.page = 1;
         this.setPages();
@@ -108,17 +108,17 @@ export default {
       this.isPayment = e;
     },
     setPages() {
-      let numberOfPages = Math.ceil(this.RuanganBaca.length / this.perPage);
+      let numberOfPages = Math.ceil(this.Bookmark.length / this.perPage);
       for (let index = 1; index <= numberOfPages; index++) {
         this.pages.push(index);
       }
     },
-    paginate(RuanganBaca) {
+    paginate(Bookmark) {
       let page = this.page;
       let perPage = this.perPage;
       let from = page * perPage - perPage;
       let to = page * perPage;
-      return RuanganBaca.slice(from, to);
+      return Bookmark.slice(from, to);
     },
     SearchData() {
       this.resultQuery;
@@ -136,10 +136,10 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          apiRuanganBaca.hapusRuanganBaca(id).then(() => {
-            this.getRuanganBaca();
+          apiBookmark.hapusBookmark(id).then(() => {
+            this.getBookmark();
           });
-          Swal.fire("Berhasil!", "Data Ruangan Berhasil Dihapus.", "success");
+          Swal.fire("Berhasil!", "Data Bookmark Berhasil Dihapus.", "success");
         }
       });
     },
@@ -166,7 +166,7 @@ export default {
                   role="tab"
                   aria-selected="false"
                 >
-                  Data Ruangan
+                  Data Bookmark
                 </a>
               </li>
             </ul>
@@ -212,19 +212,22 @@ export default {
                                     <th scope="col" style="width: 25px"></th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="customer_name">
-                                      Nama Ruangan
+                                      Nama Dokumen
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Deskripsi
+                                      Kategori
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Jumlah Orang
+                                      Nama
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Lokasi
+                                      NIM
+                                    </th>
+                                    <th class="sort" data-sort="product_name">
+                                      Jurusan
                                     </th>
                                     <th class="sort" data-sort="city">
-                                      Action
+                                      Action 
                                     </th>
                                   </tr>
                                 </thead>
@@ -234,18 +237,21 @@ export default {
                                     :key="index"
                                   >
                                     <th scope="row"></th>
-                                    <td class="customer_name">{{ data.id }}</td>
+                                    <td class="customer_name">{{ index+1 }}</td>
                                     <td class="customer_name">
-                                      {{ data.nama_ruangan }}
+                                      {{ data.dokumen.judul }}
                                     </td>
                                     <td class="product_name">
-                                      {{ data.deskripsi }}
+                                      {{ data.dokumen.kategori }}
                                     </td>
                                       <td class="product_name">
-                                      {{ data.jumlah_orang }}
+                                      {{ data.user_id.name }}
                                     </td>
                                       <td class="product_name">
-                                      {{ data.lokasi }}
+                                      {{ data.user_id.nim }}
+                                    </td>
+                                      <td class="product_name">
+                                      {{ data.user_id.jurusan }}
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
@@ -256,7 +262,7 @@ export default {
                                             <i class="ri-eye-fill fs-16"></i>
                                           </router-link>
                                         </li> -->
-                                        <li
+                                        <!-- <li
                                           class="list-inline-item edit"
                                           data-bs-toggle="tooltip"
                                           data-bs-trigger="hover"
@@ -276,7 +282,7 @@ export default {
                                           >
                                             <i class="ri-pencil-fill fs-16"></i>
                                           </router-link>
-                                        </li>
+                                        </li> -->
                                         <li
                                           class="list-inline-item"
                                           data-bs-toggle="tooltip"

@@ -227,6 +227,15 @@ export default [
     component: () => import("../views/bookmark/tambah"),
   },
   {
+    path: "/bookmark/admin",
+    name: "admin-bookmark",
+    meta: {
+      title: "Data Bookmark",
+      authRequired: true,
+    },
+    component: () => import("../views/bookmark/adminLihat"),
+  },
+  {
     path: "/bookmark/lihat",
     name: "lihat-bookmark",
     meta: {
