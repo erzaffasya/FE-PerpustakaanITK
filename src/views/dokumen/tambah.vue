@@ -154,7 +154,9 @@ export default {
             }
             this.Dokumen[name] = event.target.files[0];
         },
-
+        nextForm(){
+             document.getElementById("v-pills-bill-address-tab").click();
+        },
         postDokumen() {
             const fd = new FormData();
             $.each(this.Dokumen, function (key, value) {
@@ -472,7 +474,7 @@ export default {
                                                 <button v-if="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" disabled type="button" class="btn btn-warning btn-label right ms-auto">
                                                     <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Locked
                                                 </button>
-                                                <button :hidden="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-bill-address-tab">
+                                                <button @click="nextForm()" :hidden="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="v-pills-bill-address-tab">
                                                     <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Selanjutnya
                                                 </button>
                                             </div>

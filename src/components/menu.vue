@@ -186,7 +186,7 @@ export default {
                 </li>
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#kategori" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class='bx bx-category-alt' ></i>
+                      <i class='bx bxs-category-alt'></i>
                         <span data-key="t-dashboards"> Kategori</span>
                     </a>
                     <div class="collapse menu-dropdown" id="kategori">

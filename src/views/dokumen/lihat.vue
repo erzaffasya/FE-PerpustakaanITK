@@ -4,6 +4,7 @@ import "@vueform/multiselect/themes/default.css";
 // import flatPickr from "vue-flatpickr-component";
 import "flatpickr/dist/flatpickr.css";
 
+import Swal from "sweetalert2";
 import Layout from "../../layouts/main.vue";
 import appConfig from "../../../app.config";
 import PageHeader from "@/components/page-header";
@@ -42,27 +43,8 @@ export default {
       searchQuery: null,
       statusTable: null,
       isPagination: false,
-      config: {
-        wrap: true, // set wrap to true only when using 'input-group'
-        altFormat: "M j, Y",
-        altInput: true,
-        dateFormat: "d M, Y",
-        mode: "range",
-      },
-      timeConfig: {
-        wrap: true, // set wrap to true only when using 'input-group'
-        altFormat: "M j, Y",
-        altInput: true,
-        dateFormat: "d M, Y",
-        enableTime: true,
-        noCalendar: true,
-      },
-      // date: null,
-      // date2: null,
       defaultOptions: { animationData: animationData },
       dokumen: [],
-      // isStatus: null,
-      // isPayment: null,
     };
   },
   components: {
@@ -161,19 +143,70 @@ export default {
     //     this.setPages();
     //   });
     // },
-    getPengajuan() {
-      // this.statusTable = "Revisi";
+
+    deletePengajuan(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#34c38f",
+        cancelButtonColor: "#f46a6a",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          apiDokumen.hapusDokumen(id).then(() => {
+            this.getPengajuan();
+          });
+          Swal.fire("Berhasil!", "Data Dokumen Berhasil Dihapus.", "success");
+        }
+      });
+    },
+    deleteDiproses(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#34c38f",
+        cancelButtonColor: "#f46a6a",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          apiDokumen.hapusDokumen(id).then(() => {
+            this.getDiproses();
+          });
+          Swal.fire("Berhasil!", "Data Dokumen Berhasil Dihapus.", "success");
+        }
+      });
+    },
+    deleteRiwayat(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#34c38f",
+        cancelButtonColor: "#f46a6a",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          apiDokumen.hapusDokumen(id).then(() => {
+            this.getRiwayat();
+          });
+          Swal.fire("Berhasil!", "Data Dokumen Berhasil Dihapus.", "success");
+        }
+      });
+    },
+    async getPengajuan() {
       apiDokumen.lihatDokumen("Revisi").then((response) => {
         this.dokumen = response.data.data;
         this.pages = [];
         this.page = 1;
-        // if (!this.isPagination) {
         this.setPages();
-        // }
       });
     },
     async getDiproses() {
-      // this.statusTable = "Diproses";
       await apiDokumen.lihatDokumen("Diproses").then((response) => {
         this.dokumen = response.data.data;
         this.pages = [];
@@ -182,19 +215,12 @@ export default {
       });
     },
     async getRiwayat() {
-      // this.statusTable = ["Ditolak", "Diterima"];
       await apiDokumen.lihatDokumen("Riwayat").then((response) => {
         this.dokumen = response.data.data;
         this.pages = [];
         this.page = 1;
         this.setPages();
       });
-    },
-    onChangeStatus(e) {
-      this.isStatus = e;
-    },
-    onChangePayment(e) {
-      this.isPayment = e;
     },
     setPages() {
       let numberOfPages = Math.ceil(this.dokumen.length / this.perPage);
@@ -211,8 +237,6 @@ export default {
     },
     SearchData() {
       this.resultQuery;
-      // var isstatus = document.getElementById("idStatus").value;
-      // var payment = document.getElementById("idPayment").value;
     },
   },
 };
@@ -222,7 +246,6 @@ export default {
   <Layout>
     <PageHeader :title="title" :items="items" />
     <div class="row">
-      
       <div class="col-xxl-12">
         <div class="card">
           <div class="card-body">
@@ -293,7 +316,7 @@ export default {
                                   <i class="ri-search-line search-icon"></i>
                                 </div>
                               </div>
-                              
+
                               <!-- <div class="col-xxl-2 col-sm-6">
                                 <div>
                                   <flat-pickr
@@ -380,7 +403,6 @@ export default {
                                   </button>
                                 </div>
                               </div> -->
-                              
                             </div>
                             <!--end row-->
                           </form>
@@ -500,6 +522,7 @@ export default {
                                               d-inline-block
                                               remove-item-btn
                                             "
+                                            @click="deletePengajuan(data.id)"
                                             data-bs-toggle="modal"
                                             data-bs-target="#deleteOrder"
                                           >
@@ -599,7 +622,7 @@ export default {
                                   <i class="ri-search-line search-icon"></i>
                                 </div>
                               </div>
-                              
+
                               <!-- <div class="col-xxl-2 col-sm-6">
                                 <div>
                                   <flat-pickr
@@ -686,7 +709,6 @@ export default {
                                   </button>
                                 </div>
                               </div> -->
-                              
                             </div>
                             <!--end row-->
                           </form>
@@ -789,6 +811,7 @@ export default {
                                               d-inline-block
                                               remove-item-btn
                                             "
+                                            @click="deleteDiproses(data.id)"
                                             data-bs-toggle="modal"
                                             data-bs-target="#deleteOrder"
                                           >
@@ -888,7 +911,7 @@ export default {
                                   <i class="ri-search-line search-icon"></i>
                                 </div>
                               </div>
-                              
+
                               <!-- <div class="col-xxl-2 col-sm-6">
                                 <div>
                                   <flat-pickr
@@ -975,7 +998,6 @@ export default {
                                   </button>
                                 </div>
                               </div> -->
-                              
                             </div>
                             <!--end row-->
                           </form>
@@ -1065,7 +1087,7 @@ export default {
                                             <i class="ri-eye-fill fs-16"></i>
                                           </router-link>
                                         </li>
-                                        
+
                                         <li
                                           class="list-inline-item"
                                           data-bs-toggle="tooltip"
@@ -1079,6 +1101,7 @@ export default {
                                               d-inline-block
                                               remove-item-btn
                                             "
+                                            @click="deleteRiwayat(data.id)"
                                             data-bs-toggle="modal"
                                             data-bs-target="#deleteOrder"
                                           >
@@ -1160,7 +1183,6 @@ export default {
         </div>
         <!--end card-->
       </div>
-      
     </div>
   </Layout>
 </template>
