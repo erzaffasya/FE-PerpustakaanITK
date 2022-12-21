@@ -75,7 +75,7 @@ export default {
                 this.$router.go();
               } else {
                 this.tryingToLogIn = false;
-                this.authError = response.data.message.message;
+                this.authError = "Email atau password anda salah";
                 this.isAuthError = true;
               }
             })
