@@ -29,7 +29,6 @@ export default {
     getYudisium() {
       apiYudisium.lihatYudisium().then((response) => {
         this.Yudisium = response.data.data;
-        console.log(this.Yudisium);
       });
     },
     store() {

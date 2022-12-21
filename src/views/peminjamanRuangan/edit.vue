@@ -33,7 +33,6 @@ export default {
       apiPeminjamanRuangan
         .showPeminjamanRuangan(this.$route.params.id)
         .then((response) => {
-          console.log(response);
           this.PeminjamanRuangan = response.data.data;
         })
         .catch((err) => {
@@ -41,17 +40,14 @@ export default {
         });
     },
     updatePeminjamanRuangan(new_status) {
-      // console.log(new_status, 'status');
       apiPeminjamanRuangan
         .editPeminjamanRuangan(
           this.$route.params.id,
           Object.assign({ new_status: new_status }, this.PeminjamanRuangan)
         )
         .then((response) => {
-          console.log(response)
           Swal.fire("Berhasil!", "Status Berhasil Diubah", "success").then(
             (result) => {
-              // console.log(response.data.message)
               if (result.value) {
                 this.$router.push({ name: "lihat-peminjamanRuangan"})
               }

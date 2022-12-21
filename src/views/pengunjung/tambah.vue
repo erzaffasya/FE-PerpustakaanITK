@@ -36,7 +36,6 @@ export default {
             }
           });
         } else {
-          console.log(Pengunjung);
           Swal.fire("Error!", response.data.message, "error");
         }
       });

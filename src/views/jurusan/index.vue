@@ -55,7 +55,6 @@ export default {
       return this.paginate(this.Dokumen);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
@@ -99,7 +98,6 @@ export default {
     async getDokumen() {
       await apiDokumen.cekDokumenJurusan().then((response) => {
         this.Dokumen = response.data.data;    
-        console.log(this.Dokumen,'cekdokumen')    
         this.pages = [];
         this.page = 1;
         this.setPages();

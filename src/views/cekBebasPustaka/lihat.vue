@@ -36,7 +36,6 @@ export default {
             }
           });
         } else {
-          console.log(BebasPustaka);
           Swal.fire("Error!", response.data.message, "error");
         }
       });

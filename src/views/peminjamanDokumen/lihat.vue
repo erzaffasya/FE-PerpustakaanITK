@@ -106,7 +106,6 @@ export default {
       return this.paginate(this.PeminjamanDokumen);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
@@ -151,7 +150,6 @@ export default {
       apiPeminjamanDokumen
         .filterPeminjamanDokumen("riwayat")
         .then((response) => {
-          console.log(response, "PeminjamanDokumen");
           this.PeminjamanDokumen = response.data.data;
           this.pages = [];
           this.page = 1;
@@ -163,7 +161,6 @@ export default {
       apiPeminjamanDokumen
         .filterPeminjamanDokumen("berlangsung")
         .then((response) => {
-          console.log(response, "PeminjamanDokumen");
           this.PeminjamanDokumen = response.data.data;
           this.pages = [];
           this.page = 1;

@@ -38,11 +38,9 @@ export default {
         .getUser()
         .then((response) => {
           this.user = response.data.data;
-          // console.log(this.user, 'vertikal')
           this.isLoad = true;
         })
         .catch((error) => {
-          console.log(error, "error");
           this.$router.push("/logout");
         });
     },

@@ -106,7 +106,6 @@ export default {
       return this.paginate(this.YudisiumMahasiswa);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
@@ -142,7 +141,6 @@ export default {
   methods: {
         exportYudisiums() {
       apiYudisiumMahasiswa.exportYudisium().then((response) => {
-        console.log(response,'respose')
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
@@ -168,7 +166,6 @@ export default {
         .filterYudisiumMahasiswa("pengajuan")
         .then((response) => {
           this.YudisiumMahasiswa = response.data.data;
-          console.log(YudisiumMahasiswa);
           this.pages = [];
           this.page = 1;
           this.setPages();
@@ -723,7 +720,7 @@ export default {
                                           </router-link>
                                         </li>
                                         <li
-                                          v-if="role == 'Admin' || 'Mahasiswa'"
+                                          v-if="role == 'Admin' || role == 'Mahasiswa'"
                                           class="list-inline-item"
                                           data-bs-toggle="tooltip"
                                           data-bs-trigger="hover"

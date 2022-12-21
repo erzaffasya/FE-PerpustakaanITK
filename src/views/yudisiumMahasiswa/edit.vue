@@ -54,7 +54,6 @@ export default {
         .showYudisiumMahasiswa(id)
         .then((response) => {
           this.Yudisium = response.data.data;
-          console.log(this.Yudisium);
         })
         .catch((err) => {
           console.log(err);

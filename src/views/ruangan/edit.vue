@@ -48,7 +48,6 @@ export default {
         .showRuanganBaca(id)
         .then((response) => {
           this.RuanganBaca = response.data.data;
-          console.log(this.RuanganBaca);
         })
         .catch((err) => {
           console.log(err);

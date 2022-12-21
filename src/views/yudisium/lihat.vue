@@ -55,7 +55,6 @@ export default {
       return this.paginate(this.Yudisium);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {

@@ -17,7 +17,6 @@ export default {
       ele.target.closest(".favourite-btn").classList.toggle("active");
     },
     pinjamDokumen() {
-      console.log("terPinjam");
       apiPeminjamanDokumen
         .tambahPeminjamanDokumen({ dokumen_id: this.$route.params.id })
         .then((response) => {
@@ -40,7 +39,6 @@ export default {
       await apiDokumen.showDokumen(this.$route.params.id).then((response) => {
         this.dokumen = response.data.data;
       });
-      // console.log(this.dokumen)
     },
     revisiDokumen() {
       apiDokumen
@@ -73,7 +71,6 @@ export default {
       apiDokumen
         .downloadDokumen(this.$route.params.id, detail)
         .then((response) => {
-          console.log("clicked");
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = url;

@@ -40,7 +40,6 @@ export default {
             }
           });
         } else {
-          console.log(Yudisium);
           Swal.fire("Error!", "Data Yudisium Gagal Ditambah!", "error");
         }
       });

@@ -36,7 +36,6 @@ export default {
             }
           });
         } else {
-          console.log(RuanganBaca);
           Swal.fire("Error!", "Data Ruangan Gagal Ditambah!", "error");
         }
       });

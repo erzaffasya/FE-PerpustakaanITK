@@ -93,7 +93,6 @@ export default {
         .bacaNotifikasi()
         .then(() => {
           // this.notifikasi = response.data.data;
-          // console.log(response, 'baca notif')
         })
         .catch((error) => {
           console.log(error, "error");

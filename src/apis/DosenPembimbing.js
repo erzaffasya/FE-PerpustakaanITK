@@ -15,6 +15,6 @@ export default {
     }
   },
   lihatPembimbing() {
-    return Api.get(url + "/api/pembimbing/");
+    return Api.get(url + "/api/pembimbing");
   },
 };

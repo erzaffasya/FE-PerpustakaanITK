@@ -38,6 +38,7 @@ export default {
         yudisiumMahasiswa: null,
         pengajuanPeminjamanRuangan: null,
         pengajuanYudisium: null,
+        pengunjungTerakhir:null,
       },
       data: {},
       date: null,
@@ -269,7 +270,7 @@ export default {
             </div>
 
             <!-- Peminjaman Dokumen  -->
-            <div class="col-xl-3 col-md-6">
+            <div v-if="role != 'Tendik'" class="col-xl-3 col-md-6">
               <!-- card -->
               <div class="card card-animate">
                 <div class="card-body">
@@ -361,7 +362,8 @@ export default {
               <!-- end card -->
             </div>
 
-            <div class="col-xl-3 col-md-6">
+            <!-- Peminjaman Ruangan  -->
+            <div v-if="role != 'Tendik'" class="col-xl-3 col-md-6">
               <div class="card card-animate">
                 <div class="card-body">
                   <div class="d-flex align-items-center">
@@ -404,7 +406,7 @@ export default {
             </div>
 
             <!-- Jadwal Yudisium  -->
-            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+            <div v-if="role == 'Admin' || role =='Tendik'" class="col-xl-3 col-md-6">
               <!-- card -->
               <div class="card card-animate">
                 <div class="card-body">
@@ -451,7 +453,7 @@ export default {
             </div>
 
             <!-- Yudisium  -->
-            <div v-if="role == 'Admin'" class="col-xl-3 col-md-6">
+            <div v-if="role == 'Admin' || role == 'Tendik'" class="col-xl-3 col-md-6">
               <!-- card -->
               <div class="card card-animate">
                 <div class="card-body">
@@ -906,7 +908,7 @@ export default {
                 </div>
               </SimpleBar>
 
-              <div class="p-3">
+              <div v-if="role != 'Tendik'" class="p-3">
                 <h6 class="text-muted mb-3 text-uppercase fw-semibold">
                   Peminjaman Dokumen
                   <span class="badge badge-soft-success">Aktif</span>

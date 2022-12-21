@@ -75,7 +75,6 @@ export default {
       //   var payment = document.getElementById("idPayment").value;
     },
     toggleFavourite(ele) {
-      console.log("sukses", ele);
       this.editBookmark(ele);
       ele.target?.closest(".favourite-btn").classList.toggle("active");
     },

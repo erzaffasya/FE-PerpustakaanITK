@@ -32,7 +32,6 @@ export default {
     getPengunjung() {
       apiPengunjung.qrcodePengunjung().then((response) => {
         this.Pengunjung = response.data.data;
-        console.log(this.Pengunjung);
       });
     },
   },

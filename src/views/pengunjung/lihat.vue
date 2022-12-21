@@ -62,7 +62,6 @@ export default {
       return this.paginate(this.Pengunjung);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {

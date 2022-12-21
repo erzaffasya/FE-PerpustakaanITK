@@ -35,7 +35,6 @@ export default {
       apiPeminjamanRuangan
         .showPeminjamanRuangan(this.id)
         .then((response) => {
-          console.log(response);
           this.PeminjamanRuangan = response.data.data;
         })
         .catch((err) => {

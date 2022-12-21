@@ -27,7 +27,6 @@ export default {
     },
     methods: {
         store() {
-            console.log(this.kategori);
             const fd = new FormData();
             fd.append("nama_kategori", this.kategori.nama_kategori);
             fd.append("detail", this.kategori.detail);

@@ -139,11 +139,9 @@ export default {
             });
         },
         getBerkas(KategoriID) {
-            console.log(KategoriID)
             this.Berkas = null
             apiKategori.showKategori(KategoriID).then((response) => {
                 this.Berkas = response.data.data;
-                console.log(response.data.data, 'data kategori')
                 this.Berkas.status = this.Berkas.berkas
             });
         },
@@ -378,7 +376,7 @@ export default {
                                                     </div>
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Gambar Dokumen</label>
-                                                        <input id="cover" @change="imageChange($event, 'gambar_dokumen')" ref="gambar_dokumen" class="form-control" type="file" />
+                                                        <input id="cover" @change="imageChange($event, 'gambar_dokumen')" accept="image/*" ref="gambar_dokumen" class="form-control" type="file" />
                                                     </div>
                                                     <div class="col-12">
                                                         <label for="deskripsi" class="form-label">Deskripsi
@@ -490,109 +488,109 @@ export default {
                                                 <div v-if="this.Berkas.status['cover']" class="row g-3">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Cover</label>
-                                                        <input id="cover" @change="imageChange($event, 'cover')" ref="cover" class="form-control" type="file" required />
+                                                        <input id="cover" @change="imageChange($event, 'cover')" ref="cover" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['lembar_pengesahan']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Lembar Pengesahan</label>
-                                                        <input id="lembar_pengesahan" @change="imageChange($event, 'lembar_pengesahan')" ref="lembar_pengesahan" class="form-control" type="file" required />
+                                                        <input id="lembar_pengesahan" @change="imageChange($event, 'lembar_pengesahan')" ref="lembar_pengesahan" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['kata_pengantar']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Kata Pengantar</label>
-                                                        <input id="kata_pengantar" @change="imageChange($event, 'kata_pengantar')" ref="kata_pengantar" class="form-control" type="file" required />
+                                                        <input id="kata_pengantar" @change="imageChange($event, 'kata_pengantar')" ref="kata_pengantar" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['ringkasan']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Intisari/Ringkasan</label>
-                                                        <input id="ringkasan" @change="imageChange($event, 'ringkasan')" ref="ringkasan" class="form-control" type="file" required />
+                                                        <input id="ringkasan" @change="imageChange($event, 'ringkasan')" ref="ringkasan" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['daftar_isi']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Daftar Isi</label>
-                                                        <input id="daftar_isi" @change="imageChange($event, 'daftar_isi')" ref="daftar_isi" class="form-control" type="file" required />
+                                                        <input id="daftar_isi" @change="imageChange($event, 'daftar_isi')" ref="daftar_isi" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1 " v-if="this.Berkas.status['daftar_gambar']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Daftar Gambar</label>
-                                                        <input id="daftar_gambar" @change="imageChange($event, 'daftar_gambar')" ref="daftar_gambar" class="form-control" type="file" required />
+                                                        <input id="daftar_gambar" @change="imageChange($event, 'daftar_gambar')" ref="daftar_gambar" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['daftar_tabel']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Daftar Tabel</label>
-                                                        <input id="daftar_tabel" @change="imageChange($event, 'daftar_tabel')" ref="daftar_tabel" class="form-control" type="file" required />
+                                                        <input id="daftar_tabel" @change="imageChange($event, 'daftar_tabel')" ref="daftar_tabel" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['daftar_notasi']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Daftar Notasi</label>
-                                                        <input id="daftar_notasi" @change="imageChange($event, 'daftar_notasi')" ref="daftar_notasi" class="form-control" type="file" required />
+                                                        <input id="daftar_notasi" @change="imageChange($event, 'daftar_notasi')" ref="daftar_notasi" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['abstract_end']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Abstract [EN]</label>
-                                                        <input id="abstract_end" @change="imageChange($event, 'abstract_end')" ref="abstract_end" class="form-control" type="file" required />
+                                                        <input id="abstract_end" @change="imageChange($event, 'abstract_end')" ref="abstract_end" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['abtract_id']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Abstrak [ID]</label>
-                                                        <input id="abtract_id" @change="imageChange($event, 'abtract_id')" ref="abtract_id" class="form-control" type="file" required />
+                                                        <input id="abtract_id" @change="imageChange($event, 'abtract_id')" ref="abtract_id" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['bab1']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">BAB 1</label>
-                                                        <input id="bab1" @change="imageChange($event, 'bab1')" ref="bab1" class="form-control" type="file" required />
+                                                        <input id="bab1" @change="imageChange($event, 'bab1')" ref="bab1" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['bab2']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">BAB 2</label>
-                                                        <input id="bab2" @change="imageChange($event, 'bab2')" ref="bab2" class="form-control" type="file" required />
+                                                        <input id="bab2" @change="imageChange($event, 'bab2')" ref="bab2" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['bab3']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">BAB 3</label>
-                                                        <input id="bab3" @change="imageChange($event, 'bab3')" ref="bab3" class="form-control" type="file" required />
+                                                        <input id="bab3" @change="imageChange($event, 'bab3')" ref="bab3" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['bab4']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">BAB 4</label>
-                                                        <input id="bab4" @change="imageChange($event, 'bab4')" ref="bab4" class="form-control" type="file" required />
+                                                        <input id="bab4" @change="imageChange($event, 'bab4')" ref="bab4" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['lampiran']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Lampiran</label>
-                                                        <input id="lampiran" @change="imageChange($event, 'lampiran')" ref="lampiran" class="form-control" type="file" required />
+                                                        <input id="lampiran" @change="imageChange($event, 'lampiran')" ref="lampiran" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['paper']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Paper</label>
-                                                        <input id="paper" @change="imageChange($event, 'paper')" ref="paper" class="form-control" type="file" required />
+                                                        <input id="paper" @change="imageChange($event, 'paper')" ref="paper" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['lembar_persetujuan']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">lembar_persetujuan</label>
-                                                        <input id="lembar_persetujuan" @change="imageChange($event, 'lembar_persetujuan')" ref="lembar_persetujuan" class="form-control" type="file" required />
+                                                        <input id="lembar_persetujuan" @change="imageChange($event, 'lembar_persetujuan')" ref="lembar_persetujuan" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 mt-1" v-if="this.Berkas.status['full_dokumen']">
                                                     <div class="col-12">
                                                         <label for="address" class="form-label">Full Dokumen</label>
-                                                        <input id="full_dokumen" @change="imageChange($event, 'full_dokumen')" ref="full_dokumen" class="form-control" type="file" required />
+                                                        <input id="full_dokumen" @change="imageChange($event, 'full_dokumen')" ref="full_dokumen" class="form-control" type="file" accept="application/pdf" required />
                                                     </div>
                                                 </div>
                                                 <div class="form-check mt-4 mb-3">

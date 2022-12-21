@@ -113,7 +113,6 @@ export default {
       this.resultQuery;
     },
     toggleFavourite(ele) {
-      console.log("sukses", ele);
       this.editBookmark(ele);
       ele.target?.closest(".favourite-btn").classList.toggle("active");
     },

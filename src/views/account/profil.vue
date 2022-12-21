@@ -42,7 +42,6 @@ export default {
     getUser() {
       apiUser.getUser().then((response) => {
         this.User = response.data.data;
-        console.log(this.User);
       });
     },
     getPengunjung() {

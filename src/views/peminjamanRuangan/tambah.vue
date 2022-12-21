@@ -39,7 +39,6 @@ export default {
     getRuanganBaca() {
       apiRuanganBaca.lihatRuanganBaca().then((response) => {
         this.ruanganBaca = response.data.data;
-        console.log(this.ruanganBaca);
       });
     },
     cekRuangan() {
@@ -56,26 +55,20 @@ export default {
           )
           .then((response) => {
             this.cekKursi = response.data.data;
-            console.log(response);
             if (response.data.status == "error") {
               this.error = response.data.message;
-              // console.log(this.error);
             }
-            // console.log(this.cekKursi);
           });
       }
     },
 
     store(id) {
-      // this.peminjamanRuangan = Object.assign({'kursi_baca_id' : id}, this.peminjamanRuangan);
-      console.log(id);
       apiPeminjamanRuangan
         .tambahPeminjamanRuangan(
           Object.assign({ ruangan: id }, this.peminjamanRuangan)
         )
         .then((response) => {
           if (response.data.code == 200) {
-            // console.log(this.peminjamanRuangan);
             Swal.fire(
               "Berhasil!",
               "Data Ruang Baca Berhasil Ditambah!",
@@ -88,7 +81,6 @@ export default {
               // }
             });
           } else {
-            console.log(response.data.message.message);
             Swal.fire("Error!", response.data.message.message, "error");
           }
         });

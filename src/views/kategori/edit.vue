@@ -54,7 +54,6 @@ export default {
                 .showKategori(id)
                 .then((response) => {
                     this.Kategori = response.data.data;
-                    console.log(this.Kategori.nama_kategori);
                 })
                 .catch((err) => {
                     console.log(err);

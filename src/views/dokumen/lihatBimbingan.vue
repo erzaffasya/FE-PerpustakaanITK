@@ -62,7 +62,6 @@ export default {
       return this.paginate(this.Pembimbing);
     },
     resultQuery() {
-      console.log(this.searchQuery);
       if (this.searchQuery) {
         const search = this.searchQuery.toLowerCase();
         return this.displayedPosts.filter((data) => {
@@ -97,14 +96,12 @@ export default {
     getPembimbing() {
       apiPembimbing.lihatPembimbing().then((response) => {
         this.Pembimbing = response.data.data;
-        console.log(this.Pembimbing, "asdas");
         this.pages = [];
         this.page = 1;
         this.setPages();
       });
     },
     onChangeTanggal() {
-      console.log('test')
       apiPembimbing
         .filterTanggalPembimbing({
           tanggal_awal: this.date,
