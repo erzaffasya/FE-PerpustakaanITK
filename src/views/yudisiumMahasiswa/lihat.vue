@@ -165,6 +165,7 @@ export default {
       apiYudisiumMahasiswa
         .filterYudisiumMahasiswa("pengajuan")
         .then((response) => {
+          console.log(YudisiumMahasiswa);
           this.YudisiumMahasiswa = response.data.data;
           this.pages = [];
           this.page = 1;

@@ -45,7 +45,7 @@ export default {
           this.$route.params.id,
           Object.assign({ new_status: new_status }, this.PeminjamanRuangan)
         )
-        .then((response) => {
+        .then(() => {
           Swal.fire("Berhasil!", "Status Berhasil Diubah", "success").then(
             (result) => {
               if (result.value) {

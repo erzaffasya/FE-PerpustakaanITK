@@ -41,6 +41,7 @@ export default {
           this.isLoad = true;
         })
         .catch((error) => {
+          console.log(error, "error");
           this.$router.push("/logout");
         });
     },
