@@ -147,13 +147,19 @@ export default {
         },
 
         imageChange(event, name) {
+            let berkasChange = event.target.files[0];
             if (event) {
                 $('.preview_' + name).attr('src', URL.createObjectURL(event.target.files[0]));
             }
-            this.Dokumen[name] = event.target.files[0];
+            if (berkasChange.size > 20024 * 20024) {
+                alert('File too big (> 20MB)')
+                event.target.value = null
+            } else {
+                this.Dokumen[name] = berkasChange;
+            }
         },
-        nextForm(){
-             document.getElementById("v-pills-bill-address-tab").click();
+        nextForm() {
+            document.getElementById("v-pills-bill-address-tab").click();
         },
         postDokumen() {
             const fd = new FormData();
@@ -467,7 +473,7 @@ export default {
                                                     </div>
                                                 </div>
                                             </div>
-<!-- {{Dokumen.judul}} {{Dokumen.tahun_terbit}} {{Dokumen.penerbit}} {{KategoriID}} {{Dokumen.nama_pengarang}} {{Dokumen}} {{Dokumen['gambar_dokumen']}} -->
+                                            <!-- {{Dokumen.judul}} {{Dokumen.tahun_terbit}} {{Dokumen.penerbit}} {{KategoriID}} {{Dokumen.nama_pengarang}} {{Dokumen}} {{Dokumen['gambar_dokumen']}} -->
                                             <div class="d-flex align-items-start gap-3 mt-4">
                                                 <button v-if="!Dokumen.judul || !Dokumen.tahun_terbit || !Dokumen.penerbit || !KategoriID || !Dokumen.nama_pengarang || !Dokumen.deskripsi || !Dokumen['gambar_dokumen']" disabled type="button" class="btn btn-warning btn-label right ms-auto">
                                                     <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Locked

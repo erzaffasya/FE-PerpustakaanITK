@@ -293,7 +293,7 @@ export default {
                 <!-- App Search-->
                 <form class="app-search d-none d-md-block">
                     <div class="position-relative">
-                        <input type="text" v-model="search_navbar" class="form-control" placeholder="Search..." autocomplete="off" id="search-options" />
+                        <input type="text" v-model="search_navbar" class="form-control" placeholder="Cari Dokumen" autocomplete="off" id="search-options" />
                         <span class="mdi mdi-magnify search-widget-icon"></span>
                         <span class="
                   mdi mdi-close-circle
