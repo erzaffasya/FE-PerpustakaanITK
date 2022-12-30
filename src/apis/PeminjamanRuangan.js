@@ -19,5 +19,7 @@ export default {
     cekRuangan(tanggal, waktu_awal, waktu_akhir) {
         return Api.get(url +'/api/ruang-kosong/' + tanggal + '/waktu_awal/' + waktu_awal + '/waktu_akhir/' + waktu_akhir);
     },
-    // ruang-kosong/+tanggal+/waktu_awal/{waktu_awal}/waktu_akhir/{waktu_akhir}
+    peminjamanByRuangan(id, tanggal) {
+        return Api.get(url +'/api/ruangan/' + id + '/peminjaman-ruangan?tanggal=' + tanggal);
+    },
 }

@@ -84,6 +84,15 @@ export default [
     component: () => import("../views/ruangan/edit"),
   },
   {
+    path: "/ruangan/detail/:id",
+    name: "detail-ruangan",
+    meta: {
+      title: "Detail Ruangan",
+      authRequired: true,
+    },
+    component: () => import("../views/ruangan/detail"),
+  },
+  {
     path: "/ruangan/lihat",
     name: "lihat-ruangan",
     meta: {

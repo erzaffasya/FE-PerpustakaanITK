@@ -2,6 +2,7 @@
 import "@vueform/multiselect/themes/default.css";
 import flatPickr from "vue-flatpickr-component";
 import "flatpickr/dist/flatpickr.css";
+import Multiselect from "@vueform/multiselect";
 
 import Layout from "../../layouts/main.vue";
 import appConfig from "../../../app.config";
@@ -37,7 +38,7 @@ export default {
       perPage: 8,
       pages: [],
       value: null,
-      value1: null,
+      settingFilter: null,
       searchQuery: null,
       config: {
         wrap: true, // set wrap to true only when using 'input-group'
@@ -50,12 +51,6 @@ export default {
       defaultOptions: { animationData: animationData },
       Pengunjung: [],
     };
-  },
-  components: {
-    Layout,
-    PageHeader,
-    lottie: Lottie,
-    flatPickr,
   },
   computed: {
     displayedPosts() {
@@ -131,6 +126,13 @@ export default {
       this.resultQuery;
     },
   },
+  components: {
+    Layout,
+    PageHeader,
+    lottie: Lottie,
+    flatPickr,
+    Multiselect,
+  },
 };
 </script>
 
@@ -139,7 +141,7 @@ export default {
     <PageHeader :title="title" :items="items" />
     <div class="row">
       <!--end col-->
-      
+
       <div class="col-xxl-12">
         <div class="card">
           <div class="card-body">
@@ -152,7 +154,12 @@ export default {
                   <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                       <p
-                        class="text-uppercase fw-semibold text-muted text-truncate mb-0"
+                        class="
+                          text-uppercase
+                          fw-semibold
+                          text-muted text-truncate
+                          mb-0
+                        "
                       >
                         Total Pengunjung
                       </p>
@@ -163,12 +170,12 @@ export default {
                   >
                     <div>
                       <h4 class="fs-22 fw-semibold ff-secondary mb-4">
-                       {{this.Pengunjung.length}}
+                        {{ this.Pengunjung.length }}
                       </h4>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                       <span class="avatar-title bg-soft-primary rounded fs-3">
-                        <i class=" bx bx-male text-primary"></i>
+                        <i class="bx bx-male text-primary"></i>
                       </span>
                     </div>
                   </div>
@@ -191,14 +198,12 @@ export default {
               </li>
             </ul>
             <!-- Nav tabs -->
-            
+
             <div class="tab-content text-muted">
               <div class="tab-pane active" id="nav-badge-home" role="tabpanel">
                 <div class="">
                   <div class="flex-grow-1 ms-2">
-                    
                     <div class="col-lg-12">
-                      
                       <div class="card" id="orderList">
                         <div
                           class="
@@ -233,7 +238,10 @@ export default {
                                 </div>
                               </div>
 
-                              <div class="col-xxl-2 col-sm-6">
+                              <div
+                                v-if="settingFilter == 'Pertanggal'"
+                                class="col-xxl-2 col-sm-6"
+                              >
                                 <div>
                                   <flat-pickr
                                     placeholder="Select date"
@@ -245,7 +253,23 @@ export default {
                                   ></flat-pickr>
                                 </div>
                               </div>
-                              
+                              <div class="col-xxl-2 col-sm-6">
+                                <div>
+                                  <Multiselect
+                                    class="form-control"
+                                    v-model="settingFilter"
+                                    :close-on-select="true"
+                                    :searchable="true"
+                                    :create-option="true"
+                                    :options="[
+                                      {
+                                        value: 'Pertanggal',
+                                        label: 'Filter Pertanggal',
+                                      },
+                                    ]"
+                                  />
+                                </div>
+                              </div>
                             </div>
                             <!--end row-->
                           </form>
@@ -265,7 +289,7 @@ export default {
                                       Nama
                                     </th>
                                     <th class="sort" data-sort="status">
-                                      Tanggal {{ date }}
+                                      Tanggal
                                     </th>
                                   </tr>
                                 </thead>

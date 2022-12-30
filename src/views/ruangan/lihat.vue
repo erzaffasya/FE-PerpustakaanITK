@@ -20,6 +20,7 @@ export default {
       },
     ],
   },
+  inject: ["role"],
   data() {
     return {
       // title: "Orders",
@@ -240,22 +241,33 @@ export default {
                                     <td class="product_name">
                                       {{ data.deskripsi }}
                                     </td>
-                                      <td class="product_name">
+                                    <td class="product_name">
                                       {{ data.jumlah_orang }}
                                     </td>
-                                      <td class="product_name">
+                                    <td class="product_name">
                                       {{ data.lokasi }}
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
-                                        <!-- <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover"
-                                          data-bs-placement="top" title="View">
-                                          <router-link to="/ecommerce/order-ruangans"
-                                            class="text-primary d-inline-block">
+                                        <li
+                                          class="list-inline-item"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-trigger="hover"
+                                          data-bs-placement="top"
+                                          title="View"
+                                        >
+                                          <router-link
+                                            :to="{
+                                              name: 'detail-ruangan',
+                                              params: { id: data.id },
+                                            }"
+                                            class="text-primary d-inline-block"
+                                          >
                                             <i class="ri-eye-fill fs-16"></i>
                                           </router-link>
-                                        </li> -->
+                                        </li>
                                         <li
+                                          v-if="role == 'Admin'"
                                           class="list-inline-item edit"
                                           data-bs-toggle="tooltip"
                                           data-bs-trigger="hover"
@@ -277,6 +289,7 @@ export default {
                                           </router-link>
                                         </li>
                                         <li
+                                          v-if="role == 'Admin'"
                                           class="list-inline-item"
                                           data-bs-toggle="tooltip"
                                           data-bs-trigger="hover"
