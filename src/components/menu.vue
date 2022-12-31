@@ -207,18 +207,18 @@ export default {
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#dokumen" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class='bx bxs-file-doc' ></i>
-                        <span data-key="t-dashboards">Dokumen</span>
+                        <span data-key="t-dashboards">Laporan</span>
                     </a>
                     <div class="collapse menu-dropdown" id="dokumen">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <router-link to="/dokumen/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahdokumen">
-                                    Tambah Dokumen
+                                    Tambah Laporan
                                 </router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link to="/dokumen/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatdokumen">
-                                    Lihat Dokumen
+                                    Lihat Laporan
                                 </router-link>
                             </li>
                             <li v-if="role =='Dosen'" class="nav-item">
@@ -406,14 +406,14 @@ export default {
                                     <span data-key="t-widgets">Cek Bebas Pustaka</span>
                                 </router-link>
                             </li>
-                            <li v-if="role == 'Mahasiswa' || role =='Admin'" class="nav-item">
+                            <li v-if="role == 'Mahasiswa'" class="nav-item">
                                 <router-link to="/yudisium/pengajuan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahpengajuanyudisium">
                                     Tambah Pengajuan Yudisium
                                 </router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link to="/yudisium/pengajuan/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpengajuanyudisium">
-                                    Lihat Pengajuan Yudisium
+                                    Daftar Pengajuan Yudisium
                                 </router-link>
                             </li>
                         </ul>

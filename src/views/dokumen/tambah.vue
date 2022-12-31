@@ -23,7 +23,7 @@ export default {
     props: ["id"],
     data() {
         return {
-            title: "Wizard",
+            title: "Laporan",
             isSuccess: false,
             Kategori: {},
             Dokumen: {},
@@ -34,11 +34,11 @@ export default {
                 status: [],
             },
             items: [{
-                    text: "Forms",
+                    text: "Laporan",
                     href: "/",
                 },
                 {
-                    text: "Wizard",
+                    text: "Tambah Laporan",
                     active: true,
                 },
             ],

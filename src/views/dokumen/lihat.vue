@@ -471,7 +471,14 @@ export default {
                                         :class="`badge badge-soft-${data.statusClass} text-uppercase`"
                                         >{{ data.status }}</span
                                       > -->
-                                      {{ data.status }}
+                                      <span
+                                        class="
+                                          badge badge-soft-warning
+                                          text-uppercase
+                                        "
+                                      >
+                                        {{ data.status }}</span
+                                      >
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
@@ -777,7 +784,14 @@ export default {
                                         :class="`badge badge-soft-${data.statusClass} text-uppercase`"
                                         >{{ data.status }}</span
                                       > -->
-                                      {{ data.status }}
+                                      <span
+                                        class="
+                                          badge badge-soft-primary
+                                          text-uppercase
+                                        "
+                                      >
+                                        {{ data.status }}</span
+                                      >
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">
@@ -1066,7 +1080,24 @@ export default {
                                         :class="`badge badge-soft-${data.statusClass} text-uppercase`"
                                         >{{ data.status }}</span
                                       > -->
-                                      {{ data.status }}
+                                      <span
+                                        v-if="data.status == 'Diterima'"
+                                        class="
+                                          badge badge-soft-success
+                                          text-uppercase
+                                        "
+                                      >
+                                        {{ data.status }}</span
+                                      >
+                                      <span
+                                        v-else
+                                        class="
+                                          badge badge-soft-danger
+                                          text-uppercase
+                                        "
+                                      >
+                                        {{ data.status }}</span
+                                      >
                                     </td>
                                     <td>
                                       <ul class="list-inline hstack gap-2 mb-0">

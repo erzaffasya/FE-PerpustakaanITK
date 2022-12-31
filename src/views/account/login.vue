@@ -20,8 +20,8 @@ export default {
   },
   data() {
     return {
-      email: "lovinta@lecturer.itk.ac.id",
-      password: "password123",
+      email: null,
+      password: null,
       submitted: false,
       authError: null,
       tryingToLogIn: false,
@@ -164,7 +164,7 @@ export default {
                         type="email"
                         class="form-control"
                         id="email"
-                        placeholder="Enter email"
+                        placeholder="Masukkan email"
                         v-model="email"
                         :class="{
                           'is-invalid': submitted && v$.email.$error,
@@ -196,7 +196,7 @@ export default {
                           :class="{
                             'is-invalid': submitted && v$.password.$error,
                           }"
-                          placeholder="Enter password"
+                          placeholder="Masukkan password"
                           id="password-input"
                         />
                         <button
