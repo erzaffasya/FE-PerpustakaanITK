@@ -59,6 +59,16 @@ export default {
           console.log(err);
         });
     },
+    cekStatus() {
+      if (
+        this.Yudisium.status_berkas == 1 &&
+        this.Yudisium.status_pinjam == 1
+      ) {
+        this.Yudisium.status_final = 1;
+      } else {
+        this.Yudisium.status_final = 0;
+      }
+    },
   },
   mounted() {
     this.message = "";
@@ -83,9 +93,7 @@ export default {
               <form @submit.prevent="store()">
                 <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label"
-                      >Nama</label
-                    >
+                    <label for="nameInput" class="form-label">Nama</label>
                   </div>
                   <div class="col-lg-9">
                     <input
@@ -99,9 +107,7 @@ export default {
                 </div>
                 <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label"
-                      >NIM</label
-                    >
+                    <label for="nameInput" class="form-label">NIM</label>
                   </div>
                   <div class="col-lg-9">
                     <input
@@ -115,11 +121,14 @@ export default {
                 </div>
                 <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label">Status Berkas</label>
+                    <label for="nameInput" class="form-label"
+                      >Status Berkas Tugas Akhir</label
+                    >
                   </div>
                   <div class="col-lg-9">
                     <select
                       class="form-control"
+                      @change="cekStatus()"
                       v-model="Yudisium.status_berkas"
                     >
                       <option value="1">Terpenuhi</option>
@@ -130,11 +139,14 @@ export default {
 
                 <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label">Status Peminjaman</label>
+                    <label for="nameInput" class="form-label"
+                      >Status Tunggakan Peminjaman</label
+                    >
                   </div>
                   <div class="col-lg-9">
                     <select
                       class="form-control"
+                      @change="cekStatus()"
                       v-model="Yudisium.status_pinjam"
                     >
                       <option value="1">Terpenuhi</option>
@@ -144,12 +156,15 @@ export default {
                 </div>
                 <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label">Status Final</label>
+                    <label for="nameInput" class="form-label"
+                      >Status Yudisium</label
+                    >
                   </div>
                   <div class="col-lg-9">
                     <select
                       class="form-control"
                       v-model="Yudisium.status_final"
+                      disabled
                     >
                       <option value="1">Terpenuhi</option>
                       <option value="0">Tidak Terpenuhi</option>

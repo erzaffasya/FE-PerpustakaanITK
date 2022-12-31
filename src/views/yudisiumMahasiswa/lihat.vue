@@ -311,15 +311,15 @@ export default {
                                       Angkatan
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Berkas
+                                      Status Berkas Tugas Akhir
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Peminjaman
+                                      Status Tunggakan Peminjaman
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Final
+                                      Status Yudisium
                                     </th>
-                                    <th class="sort" data-sort="city">
+                                    <th v-if="role == 'Admin'" class="sort" data-sort="city">
                                       Action
                                     </th>
                                   </tr>
@@ -598,15 +598,15 @@ export default {
                                       Angkatan
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Berkas
+                                      Status Berkas Tugas Akhir
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Peminjaman
+                                      Status Tunggakan Peminjaman
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Status Final
+                                      Status Yudisium
                                     </th>
-                                    <th class="sort" data-sort="city">
+                                    <th v-if="role == 'Admin'" class="sort" data-sort="city">
                                       Action
                                     </th>
                                   </tr>

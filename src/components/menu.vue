@@ -187,18 +187,18 @@ export default {
                 <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#kategori" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                       <i class='bx bxs-category-alt'></i>
-                        <span data-key="t-dashboards"> Kategori</span>
+                        <span data-key="t-dashboards"> Kategori Dokumen</span>
                     </a>
                     <div class="collapse menu-dropdown" id="kategori">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <router-link to="/kategori/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahkategori">
-                                    Tambah Kategori
+                                    Tambah Kategori Dokumen
                                 </router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link to="/kategori/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatkategori">
-                                    Lihat Kategori
+                                    Lihat Kategori Dokumen
                                 </router-link>
                             </li>
                         </ul>
@@ -207,7 +207,7 @@ export default {
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#dokumen" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class='bx bxs-file-doc' ></i>
-                        <span data-key="t-dashboards"> Dokumen</span>
+                        <span data-key="t-dashboards">Dokumen</span>
                     </a>
                     <div class="collapse menu-dropdown" id="dokumen">
                         <ul class="nav nav-sm flex-column">
@@ -264,6 +264,14 @@ export default {
                     <router-link to="/bookmark/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatbookmark">
                         <i class='bx bxs-bookmark' ></i>
                         <span data-key="t-widgets">Bookmark</span>
+                    </router-link>
+                </li>
+
+
+                <li class="nav-item">
+                    <router-link class="nav-link remove-sidebar menu-link" to="/grid-dokumen" data-key="t-caridokumen">
+                        <i class='bx bxs-file-find' ></i>
+                        <span data-key="t-widgets">Daftar Kumpulan Dokumen</span>
                     </router-link>
                 </li>
             </div>
@@ -418,19 +426,13 @@ export default {
                     </router-link>
                 </li> -->
             </div>
-            <div v-if="role != 'Tendik'">
+            <!-- <div v-if="role != 'Tendik'">
                 <li class="menu-title">
                     <i class="ri-more-fill"></i>
                     <span data-key="t-cari-dokumen">Fitur</span>
                 </li>
 
-                <li class="nav-item">
-                    <router-link class="nav-link remove-sidebar menu-link" to="/grid-dokumen" data-key="t-caridokumen">
-                        <i class='bx bxs-file-find' ></i>
-                        <span data-key="t-widgets">Cari Dokumen</span>
-                    </router-link>
-                </li>
-            </div>
+            </div> -->
         </ul>
     </template>
 </div>
