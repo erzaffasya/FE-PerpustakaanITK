@@ -211,7 +211,7 @@ export default {
                                       Deskripsi
                                     </th>
                                     <th class="sort" data-sort="date">
-                                      Berkas
+                                      Lampiran Berkas
                                     </th>
                                     <th class="sort" data-sort="date">
                                       Pembimbing

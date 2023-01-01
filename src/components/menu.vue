@@ -309,11 +309,11 @@ export default {
                     </a>
                     <div class="collapse menu-dropdown" id="peminjamanruangan">
                         <ul class="nav nav-sm flex-column">
-                                 <li class="nav-item">
+                                 <!-- <li class="nav-item">
                                 <router-link to="/ruangan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahruanganbaca">
                                     Cek Ruangan
                                 </router-link>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <router-link to="/peminjaman-ruangan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahpeminjamanruangan">
                                     Tambah Peminjaman Ruangan

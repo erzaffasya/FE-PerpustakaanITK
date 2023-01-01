@@ -319,7 +319,7 @@ export default {
                                     <th class="sort" data-sort="product_name">
                                       Status Yudisium
                                     </th>
-                                    <th v-if="role == 'Admin'" class="sort" data-sort="city">
+                                    <th class="sort" data-sort="city">
                                       Action
                                     </th>
                                   </tr>
@@ -721,7 +721,7 @@ export default {
                                           </router-link>
                                         </li>
                                         <li
-                                          v-if="role == 'Admin' || role == 'Mahasiswa'"
+                                          v-if="role == 'Admin'"
                                           class="list-inline-item"
                                           data-bs-toggle="tooltip"
                                           data-bs-trigger="hover"

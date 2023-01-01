@@ -128,8 +128,8 @@ export default {
       ApiKategori.lihatKategori().then((response) => {
         // this.Kategori  = response.data.data;
         response.data.data.forEach((value) => {
-          let data = {value: value.id, label: value.nama_kategori}
-          this.Kategori.push(data)
+          let data = { value: value.id, label: value.nama_kategori };
+          this.Kategori.push(data);
         });
       });
     },
@@ -177,16 +177,13 @@ export default {
             v-model="filterKategori"
             :close-on-select="true"
             :searchable="true"
-            :options="
-             this.Kategori 
-            "
+            :options="this.Kategori"
           />
         </div>
       </div>
     </div>
 
     <div class="row">
-      
       <div
         class="col-xxl-3 col-sm-6 project-card"
         v-for="(item, index) of resultQuery"
@@ -197,7 +194,7 @@ export default {
             <div class="d-flex flex-column h-100">
               <div class="d-flex">
                 <div class="flex-grow-1">
-                  <p class="text-muted mb-4"> </p>
+                  <p class="text-muted mb-4"></p>
                 </div>
                 <div class="flex-shrink-0">
                   <div class="hstack gap-1 flex-wrap">
@@ -297,7 +294,11 @@ export default {
               <div class="mt-auto">
                 <div class="d-flex mb-2">
                   <div class="flex-grow-1">
-                    <div>{{item.kategori}}</div>
+                    <div>
+                      <span class="badge badge-soft-primary text-uppercase">
+                        {{ item.kategori }}</span
+                      >
+                    </div>
                   </div>
                   <div class="flex-shrink-0">
                     <div>
@@ -322,42 +323,14 @@ export default {
             </div>
           </div>
           <!-- end card body -->
-          <div class="card-footer bg-transparent border-top-dashed py-2">
+          <div
+            class="card-footer mt-auto bg-transparent border-top-dashed py-2"
+          >
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
-                <div class="avatar-group">
-                  <a
-                    href="javascript: void(0);"
-                    v-for="(subitem, index) of item.subItem"
-                    :key="index"
-                    class="avatar-group-item"
-                    data-bs-toggle="tooltip"
-                    data-bs-trigger="hover"
-                    data-bs-placement="top"
-                    title="Darline Williams"
-                  >
-                    <div class="avatar-xxs" v-if="!subitem.imgNumber">
-                      <img
-                        :src="subitem.imgFooter"
-                        alt=""
-                        class="rounded-circle img-fluid"
-                      />
-                    </div>
-                    <div class="avatar-xxs" v-if="!subitem.imgFooter">
-                      <div
-                        class="
-                          avatar-title
-                          fs-16
-                          rounded-circle
-                          bg-light
-                          border-dashed border
-                          text-primary
-                        "
-                      >
-                        {{ subitem.imgNumber }}
-                      </div>
-                    </div>
-                  </a>
+                <div class="text-muted">
+                  <i class="ri-eye-fill"></i>
+                  {{ item.jumlah_kunjungan }}
                 </div>
               </div>
               <div class="flex-shrink-0">
