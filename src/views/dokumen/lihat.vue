@@ -416,13 +416,15 @@ export default {
                               >
                                 <thead class="text-muted table-light">
                                   <tr class="text-uppercase">
-                                    <th scope="col" style="width: 25px"></th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="customer_name">
                                       Judul
                                     </th>
                                     <th class="sort" data-sort="product_name">
                                       Kategori
+                                    </th>
+                                    <th class="sort" data-sort="date">
+                                      Prodi
                                     </th>
                                     <th class="sort" data-sort="date">
                                       Jurusan
@@ -443,21 +445,17 @@ export default {
                                     v-for="(data, index) of resultQuery"
                                     :key="index"
                                   >
-                                    <th scope="row">
-                                      {{ index + 1 }}
-                                    </th>
                                     <td class="id">
-                                      <router-link
-                                        to="/ecommerce/order-details"
-                                        class="fw-medium link-primary"
-                                        >{{ data.orderId }}
-                                      </router-link>
+                                      {{ index + 1 }}
                                     </td>
                                     <td class="customer_name">
                                       {{ data.judul }}
                                     </td>
                                     <td class="product_name">
                                       {{ data.kategori.nama_kategori }}
+                                    </td>
+                                    <td class="customer_name">
+                                      {{ data.prodi }}
                                     </td>
                                     <td class="date">
                                       {{ data.jurusan }}
@@ -729,13 +727,15 @@ export default {
                               >
                                 <thead class="text-muted table-light">
                                   <tr class="text-uppercase">
-                                    <th scope="col" style="width: 25px"></th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="customer_name">
                                       Judul
                                     </th>
                                     <th class="sort" data-sort="product_name">
                                       Kategori
+                                    </th>
+                                    <th class="sort" data-sort="product_name">
+                                      Prodi
                                     </th>
                                     <th class="sort" data-sort="date">
                                       Jurusan
@@ -756,21 +756,17 @@ export default {
                                     v-for="(data, index) of resultQuery"
                                     :key="index"
                                   >
-                                    <th scope="row">
-                                      {{ index + 1 }}
-                                    </th>
                                     <td class="id">
-                                      <router-link
-                                        to="/ecommerce/order-details"
-                                        class="fw-medium link-primary"
-                                        >{{ data.orderId }}
-                                      </router-link>
+                                      {{ index + 1 }}
                                     </td>
                                     <td class="customer_name">
                                       {{ data.judul }}
                                     </td>
                                     <td class="product_name">
                                       {{ data.kategori.nama_kategori }}
+                                    </td>
+                                    <td class="customer_name">
+                                      {{ data.prodi }}
                                     </td>
                                     <td class="date">
                                       {{ data.jurusan }}
@@ -1025,13 +1021,15 @@ export default {
                               >
                                 <thead class="text-muted table-light">
                                   <tr class="text-uppercase">
-                                    <th scope="col" style="width: 25px"></th>
                                     <th class="sort" data-sort="id">No</th>
                                     <th class="sort" data-sort="customer_name">
                                       Judul
                                     </th>
                                     <th class="sort" data-sort="product_name">
                                       Kategori
+                                    </th>
+                                    <th class="sort" data-sort="customer_name">
+                                      Prodi
                                     </th>
                                     <th class="sort" data-sort="date">
                                       Jurusan
@@ -1052,21 +1050,17 @@ export default {
                                     v-for="(data, index) of resultQuery"
                                     :key="index"
                                   >
-                                    <th scope="row">
-                                      {{ index + 1 }}
-                                    </th>
                                     <td class="id">
-                                      <router-link
-                                        to="/ecommerce/order-details"
-                                        class="fw-medium link-primary"
-                                        >{{ data.orderId }}
-                                      </router-link>
+                                      {{ index + 1 }}
                                     </td>
                                     <td class="customer_name">
                                       {{ data.judul }}
                                     </td>
                                     <td class="product_name">
                                       {{ data.kategori.nama_kategori }}
+                                    </td>
+                                    <td class="customer_name">
+                                      {{ data.prodi }}
                                     </td>
                                     <td class="date">
                                       {{ data.jurusan }}
