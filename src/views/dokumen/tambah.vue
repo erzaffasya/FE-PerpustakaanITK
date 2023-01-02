@@ -14,7 +14,7 @@ import $ from 'jquery';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default {
     page: {
-        title: "Wizard",
+        title: "Laporan",
         meta: [{
             name: "description",
             content: appConfig.description
@@ -96,7 +96,7 @@ export default {
     },
     methods: {
         setStatus() {
-            this.isSuccess = true
+            // this.isSuccess = true
         },
         checkDospem() {
             if (this.Dokumen.pembimbing_1 == this.Dokumen.pembimbing_2) {
@@ -176,6 +176,7 @@ export default {
                             "success"
                         ).then((result) => {
                             if (result.value) {
+                                this.isSuccess = true
                                 document.getElementById("v-pills-finish-tab").click();
                             }
                         });
@@ -194,6 +195,7 @@ export default {
                             "success"
                         ).then((result) => {
                             if (result.value) {
+                                this.isSuccess = true
                                 document.getElementById("v-pills-finish-tab").click();
                             }
                         });

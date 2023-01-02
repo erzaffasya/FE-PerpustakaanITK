@@ -393,7 +393,7 @@ export default {
                                     params: { id: item.dokumen.id },
                                   }"
                                   class="btn btn-light w-100"
-                                  >View Details</router-link
+                                  >Detail Dokumen</router-link
                                 >
                               </div>
                             </div>

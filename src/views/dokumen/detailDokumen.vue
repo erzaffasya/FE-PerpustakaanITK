@@ -26,6 +26,7 @@ export default {
               "Peminjaman Dokumen Berhasil Ditambah!",
               "success"
             ).then((result) => {
+              this.getDokumen()
               if (result.value) {
                 this.$router.push("lihat");
               }
@@ -206,7 +207,7 @@ export default {
                         "
                         type="button"
                         @click="pinjamDokumen(this.$route.params.id)"
-                        class="btn btn-success add-btn"
+                        class="btn btn-warning add-btn"
                       >
                         <i class="ri-add-line align-bottom me-1"></i> Pinjam
                         Dokumen
