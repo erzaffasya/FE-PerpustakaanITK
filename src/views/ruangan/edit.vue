@@ -95,7 +95,7 @@ export default {
                 </div>
                  <div class="row mb-3">
                   <div class="col-lg-3">
-                    <label for="nameInput" class="form-label">Jumlah Orang</label>
+                    <label for="nameInput" class="form-label">Kapasitas Orang</label>
                   </div>
                   <div class="col-lg-9">
                     <input type="number" v-model="RuanganBaca.jumlah_orang" class="form-control" placeholder="Masukkan Jumlah Orang" required/>

@@ -26,6 +26,7 @@ export default {
       authError: null,
       tryingToLogIn: false,
       isAuthError: false,
+      showPassword: false,
     };
   },
   validations: {
@@ -44,6 +45,13 @@ export default {
     },
   },
   methods: {
+    clickShowPassword() {
+      if (this.showPassword) {
+        this.showPassword = false;
+      } else {
+        this.showPassword = true;
+      }
+    },
     // Try to log the user in with the username
     // and password they provided.
     login() {
@@ -190,7 +198,7 @@ export default {
                       >
                       <div class="position-relative auth-pass-inputgroup mb-3">
                         <input
-                          type="password"
+                          :type="showPassword ? 'text' : 'password'"
                           v-model="password"
                           class="form-control pe-5"
                           :class="{
@@ -207,6 +215,7 @@ export default {
                             top-0
                             text-decoration-none text-muted
                           "
+                          @click="clickShowPassword()"
                           type="button"
                           id="password-addon"
                         >
@@ -225,7 +234,12 @@ export default {
 
                     <div class="">
                       <label class="form-check-label">
-                        Lupa password? <a target="_blank" href="https://gerbang.itk.ac.id/?hal=lupapw">Klik Disini!</a>
+                        Lupa password?
+                        <a
+                          target="_blank"
+                          href="https://gerbang.itk.ac.id/?hal=lupapw"
+                          >Klik Disini!</a
+                        >
                       </label>
                     </div>
 

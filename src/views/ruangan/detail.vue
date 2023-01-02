@@ -643,7 +643,7 @@ export default {
                   </tr>
                   <tr class="pb-5 mb-5">
                     <td class="pb-5 mb-5 fw-semibold" scope="row">
-                      Jumlah Maksimal Orang
+                      Kapasitas Maksimal Orang
                     </td>
                     <td>{{ RuanganBaca.jumlah_orang }}</td>
                   </tr>

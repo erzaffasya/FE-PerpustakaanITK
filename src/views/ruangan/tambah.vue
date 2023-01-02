@@ -97,7 +97,7 @@ export default {
                 <div class="row mb-3">
                   <div class="col-lg-3">
                     <label for="nameInput" class="form-label"
-                      >Jumlah Orang</label
+                      >Kapasitas Orang</label
                     >
                   </div>
                   <div class="col-lg-9">

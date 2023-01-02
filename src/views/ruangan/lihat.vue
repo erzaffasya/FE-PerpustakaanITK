@@ -218,7 +218,7 @@ export default {
                                       Deskripsi
                                     </th>
                                     <th class="sort" data-sort="product_name">
-                                      Jumlah Orang
+                                      Kapasitas Orang
                                     </th>
                                     <th class="sort" data-sort="product_name">
                                       Lokasi
