@@ -376,7 +376,7 @@ export default {
                                       <div class="d-flex">
                                         <div class="flex-shrink-0">
                                           <img
-                                            src="@/assets/images/users/avatar-6.jpg"
+                                            src="@/assets/images/user.png"
                                             alt=""
                                             class="avatar-xs rounded-circle"
                                           />
@@ -430,7 +430,7 @@ export default {
                                         <div class="d-flex">
                                           <div class="flex-shrink-0">
                                             <img
-                                              src="@/assets/images/users/avatar-6.jpg"
+                                              src="@/assets/images/user.png"
                                               alt=""
                                               class="avatar-xs rounded-circle"
                                             />
@@ -492,7 +492,7 @@ export default {
                                         <div class="d-flex">
                                           <div class="flex-shrink-0">
                                             <img
-                                              src="@/assets/images/users/avatar-6.jpg"
+                                              src="@/assets/images/user.png"
                                               alt=""
                                               class="avatar-xs rounded-circle"
                                             />
