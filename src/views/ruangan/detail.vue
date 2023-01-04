@@ -132,7 +132,7 @@ export default {
   <Layout>
     <PageHeader :title="title" :items="items" />
     <div class="row">
-      <div class="col-lg-12">
+      <!-- <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
             <div class="d-flex align-items-center flex-wrap gap-2">
@@ -175,7 +175,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--end col-->
       <div class="col-xxl-9">
         <div class="card" id="contactList">

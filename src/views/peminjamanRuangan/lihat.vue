@@ -192,7 +192,7 @@ export default {
                   role="tab"
                   aria-selected="false"
                 >
-                  Lihat Peminjaman Ruangan
+                  Riwayat Peminjaman Ruangan
                 </a>
               </li>
             </ul>

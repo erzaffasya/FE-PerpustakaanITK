@@ -271,7 +271,7 @@ export default {
                 <li class="nav-item">
                     <router-link class="nav-link remove-sidebar menu-link" to="/grid-dokumen" data-key="t-caridokumen">
                         <i class='bx bxs-file-find' ></i>
-                        <span data-key="t-widgets">Daftar Kumpulan Dokumen</span>
+                        <span data-key="t-widgets">Koleksi Laporan dan E-Book</span>
                     </router-link>
                 </li>
             </div>
@@ -281,14 +281,14 @@ export default {
                     <span data-key="t-Booking Ruangan">Booking Ruangan</span>
                 </li>
 
-                <li class="nav-item">
+                <li v-if="role == 'Admin'" class="nav-item">
                     <a class="nav-link menu-link" href="#ruanganbaca" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class='bx bxs-cabinet'></i>
                         <span data-key="t-dashboards"> Ruangan</span>
                     </a>
                     <div class="collapse menu-dropdown" id="ruanganbaca">
                         <ul class="nav nav-sm flex-column">
-                            <li v-if="role == 'Admin'" class="nav-item">
+                            <li class="nav-item">
                                 <router-link to="/ruangan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahruanganbaca">
                                     Tambah Ruangan
                                 </router-link>
@@ -309,11 +309,11 @@ export default {
                     </a>
                     <div class="collapse menu-dropdown" id="peminjamanruangan">
                         <ul class="nav nav-sm flex-column">
-                                 <!-- <li class="nav-item">
-                                <router-link to="/ruangan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahruanganbaca">
-                                    Cek Ruangan
+                            <li v-if="role != 'Admin' || role != 'Tendik'" class="nav-item">
+                                <router-link to="/ruangan/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-tambahruanganbaca">
+                                    Ketersediaan Ruangan
                                 </router-link>
-                            </li> -->
+                            </li>
                             <li class="nav-item">
                                 <router-link to="/peminjaman-ruangan/tambah" class="nav-link remove-sidebar custom-abc" data-key="t-tambahpeminjamanruangan">
                                     Tambah Peminjaman Ruangan
@@ -337,7 +337,8 @@ export default {
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#pengunjung" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                      <i class='bx bx-body' ></i>
-                        <span data-key="t-dashboards"> Pengunjung</span>
+                        <span v-if="role == 'Admin'" data-key="t-dashboards"> Pengunjung</span>
+                        <span v-else data-key="t-dashboards"> Kunjungan</span>
                     </a>
                     <div class="collapse menu-dropdown" id="pengunjung">
                         <ul class="nav nav-sm flex-column">
@@ -347,8 +348,11 @@ export default {
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/pengunjung/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpengunjung">
+                                <router-link v-if="role == 'Admin'"  to="/pengunjung/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpengunjung">
                                     Lihat Pengunjung
+                                </router-link>
+                                 <router-link v-else to="/pengunjung/lihat" class="nav-link remove-sidebar custom-abc" data-key="t-lihatpengunjung">
+                                    Lihat Kunjungan
                                 </router-link>
                             </li>
                         </ul>
