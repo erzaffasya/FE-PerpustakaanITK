@@ -158,8 +158,16 @@ export default {
                 this.Dokumen[name] = berkasChange;
             }
         },
+        nextDatadokumen(){
+            document.getElementById("v-pills-bill-info-tab").click();
+        },
         nextForm() {
+            document.getElementById("v-pills-bill-info-tab").classList.add("done");
             document.getElementById("v-pills-bill-address-tab").click();
+        },
+        nextSelesai(){
+            document.getElementById("v-pills-bill-address-tab").classList.add("done");
+            document.getElementById("v-pills-finish-tab").click();
         },
         postDokumen() {
             const fd = new FormData();
@@ -177,7 +185,7 @@ export default {
                         ).then((result) => {
                             if (result.value) {
                                 this.isSuccess = true
-                                document.getElementById("v-pills-finish-tab").click();
+                                this.nextSelesai()
                             }
                         });
                     } else {
@@ -608,7 +616,7 @@ export default {
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-start gap-3 mt-4">
-                                                <button type="button" class="btn btn-light btn-label previestab" data-previous="v-pills-bill-info-tab">
+                                                <button @click="nextDatadokumen()" type="button" class="btn btn-light btn-label previestab" data-previous="v-pills-bill-info-tab">
                                                     <i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>
                                                     Kembali
                                                 </button>
